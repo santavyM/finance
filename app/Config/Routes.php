@@ -31,9 +31,23 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
-$routes->get('finance', 'Home::method1');
+$routes->get('/', 'Home::method1');
+$routes->get('finance1', 'Home::method1');
 $routes->get('kalkulacka', 'Home::method2');
+
+$routes->group('admin', static function($routes){
+    $routes->group('', ['filter'=>'cifilter:auth'], static function($routes){
+        //$routes->get('example-page','Home::method3');
+        $routes->get('home', 'AdminController::index', ['as' => 'admin.home']);
+        $routes->get('logout', 'AdminController::LogoutHandler', ['as' => 'admin.logout']);
+    });
+
+    $routes->group('', ['filter'=>'cifilter:guest'], static function($routes) {
+        //$routes->get('example-auth','Home::method4');
+        $routes->get('login', 'AuthController::loginForm', ['as'=>'admin.login.form']);
+        $routes->post('login', 'AuthController::loginHandler', ['as' => 'admin.login.handler']);
+    });
+});
 
 
 /*
