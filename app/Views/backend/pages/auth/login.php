@@ -8,7 +8,7 @@
     <?php $validation = \Config\Services::validation(); ?>
         <form action="<?= route_to(base_url('admin.login.handler'))?>" method="POST">
         <?= csrf_field() ?>
-            <?php if (!empty(session()->getFlashdata('success'))) : ?>
+            <?php if(!empty(session()->getFlashdata('success'))) : ?>
                 <div class="alert alert-success">
                     <?= session()->getFlashdata('success') ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -16,7 +16,7 @@
                     </button>
                 </div>
             <?php endif; ?>
-            <?php if (!empty(session()->getFlashdata('fail'))) : ?>
+            <?php if(!empty(session()->getFlashdata('fail'))) : ?>
                 <div class="alert alert-danger">
                     <?= session()->getFlashdata('fail') ?>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -55,7 +55,7 @@
             </div>
             <div class="col-6">
                 <div class="forgot-password">
-                    <a href="forgot-password.html">Forgot Password</a>
+                    <a href="<?= base_url('/admin/forgot-password') ?>">Forgot Password</a>
                 </div>
             </div>
         </div>
