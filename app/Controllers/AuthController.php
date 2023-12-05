@@ -133,7 +133,7 @@ class AuthController extends BaseController
                     ]);
                 }
                 
-                $actionLink = route_to('admin.reset-password', $token);
+                $actionLink = base_url(route_to('admin.reset-password', $token));
 
                 $mail_data = array(
                     'actionLink'=>$actionLink,
@@ -158,5 +158,26 @@ class AuthController extends BaseController
                     return redirect()->route('admin.forgot.form')->with('fail','fail');
                 }
             }
+    }
+
+    public function resetPassword($token){
+        $passwordResetPassword = new PasswordResetToken();
+        $check_token = $passwordResetPassword->asObject()->where('token', $token)->first();
+
+        if( !$check_token ){
+            return redirect()->route('admin.forgot.form')->with('fail','Invalid token. Request another');
+        }else{
+            $diffMins = Carbon::createFromFormat('Y-m-d H:i:s', $check_token->created_at)->diffInMinutes(Carbon::now());
+
+            if( $diffMins > 15){
+                return redirect()->route('admin.forgot.form')->with('fail','token expired');
+            }else{
+                return view('backend/pages/auth/reset',[
+                    'pageTitle'=>'Reset Password',
+                    'validation'=>null,
+                    'token'=>$token
+                ]);
+            }
+        }
     }
 }
