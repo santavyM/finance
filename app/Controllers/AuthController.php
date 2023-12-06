@@ -180,4 +180,74 @@ class AuthController extends BaseController
             }
         }
     }
+
+    public function resetPasswordHandler($token){
+        $isValid = $this->validate([
+            'new_password' =>[
+                'rules'=> 'required|min_length[5]|max_length[20]|is_password_strong[new_password]',
+                'errors' =>[
+                    'required' => 'Zadej nove heslo',
+                    'min_length' => 'heslo musi byt alespon 5 charakteru dlouhe',
+                    'max_length' => 'heslo musi byt alespon 20 charakteru dlouhe',
+                    'is_password_strong' => 'Nové heslo musi obsahovat alespon 1 velké, 1 malé písmeno, 1 číslo a 1 specialní znak',
+                ]
+            ],
+            'confirm_new_password'=>[
+                'rules'=> 'required|matches[new_password]',
+                'errors' =>[
+                    'required' => 'potvrd nove heslo',
+                    'matches' => 'hesla se neshodují',
+                ]
+            ]
+        ]);
+
+        if( !$isValid ){
+            return view('backend/pages/auth/reset',[
+                'pageTitle' => 'reset password',
+                'validation'=>null,
+                'token'=>$token,
+            ]);
+        }else{
+            $passwordResetPassword = new PasswordResetToken();
+            $get_token = $passwordResetPassword->asObject()->where('token',$token)->first();
+
+
+            $user = new User();
+            $user_info = $user->asObject()->where('email', $get_token->email)->first();
+
+            if(!$get_token){
+                return redirect()->back()->with('fall', 'invalid token!')->withInput();
+            }else{
+                $user->where('email', $user_info->email)
+                     ->set(['password'=>Hash::make($this->request->getVar('new_password'))])
+                     ->update();
+
+                $mail_data = array(
+                    'user'=>$user_info,
+                    'new_password'=>$this->request->getVar('new_password')
+                );
+
+                $view = \Config\Services::renderer();
+                $mail_body = $view->setVar('mail_data', $mail_data)->render('email-templates/password-changed-email-template');
+
+                $mailConfig = array(
+                    'mail_from_email'=>env('EMAIL_FROM_ADDRESS'),
+                    'mail_from_name'=>env('EMAIL_FROM_NAME'),
+                    'mail_recipient_email'=>$user_info->email,
+                    'mail_recipient_name'=>$user_info->name,
+                    'mail_subject'=>'password changed',
+                    'mail_body'=>$mail_body
+                );
+
+                if(sendEmail($mailConfig)){
+                    $passwordResetPassword->where('email', $user_info->email)->delete();
+
+                    return redirect()->route('admin.login.form')->with('success','Hotovo! heslo změněno');
+                }else{
+                    return redirect()->back()->with('fail','Něco se podělalo');
+                }
+            }
+        }
+
+    }
 }
