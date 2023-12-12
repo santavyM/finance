@@ -14,11 +14,11 @@ class Home extends BaseController
     }
 
     public function method2() {
-        echo view('kalkulacka');
+        echo view('kalkulacky/hypotecni-kalkulacka');
     }
 
     public function method3() {
-        echo view('example-page');
+        echo view('kalkulacky/investicni-kalkulacka');
     }
 
     public function method4() {

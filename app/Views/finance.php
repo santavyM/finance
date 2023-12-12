@@ -110,7 +110,7 @@
                 </div>
                 <h2 class="experience-sub-title project-title">Hypotéka</h2>
                 <div class="btn-container">
-                <a href="kalkulacka">
+                <a href="hypotecni-kalkulacka">
                     <button class="btn btn-color2 project-btn">Otevřít</button></a>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                 </div>
                 <h2 class="experience-sub-title project-title">ROI</h2>
                 <div class="btn-container">
-                <a href="https://www.github.com" target="_blank">
+                <a href="investicni-kalkulacka" target="_blank">
                     <button class="btn btn-color2 project-btn">ROI</button></a>
                 </div>
             </div>

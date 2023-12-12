@@ -33,7 +33,9 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::method1');
 $routes->get('finance1', 'Home::method1');
-$routes->get('kalkulacka', 'Home::method2');
+$routes->get('hypotecni-kalkulacka', 'Home::method2');
+$routes->get('investicni-kalkulacka', 'Home::method3');
+
 
 $routes->group('admin', static function($routes){
     $routes->group('', ['filter'=>'cifilter:auth'], static function($routes){

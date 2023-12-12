@@ -2,7 +2,7 @@
 
 <?=$this->section("content")?>
 
-
+<div class="hypotecni">
     <div class="loan-calculator">
       <div class="top">
         <h1 class="title">Loan Calculator</h2>
@@ -62,5 +62,9 @@
         </div>
       </div>
     </div>
+</div>
 
+<script>
+  
+</script>
 <?=$this->endSection()?>

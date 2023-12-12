@@ -120,5 +120,32 @@
         flex-direction: column;
         text-align: center;
       }
+}
+@media screen and (max-width: 800px){
+    .mortgage-calculator {
+        width: 90%;
+        max-width: 500px;
+    }
 
+    .mortgage-calculator .flex{
+		display: inline-block;
+	}
+
+    .mortgage-calculator form select {
+        width: 80%;
+    }
+
+    .mortgage-calculator form {
+        width: 90%;
+        max-width: 500px;
+    }
+
+    .loan-calculator .result {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mortgage-calculator .calculate-btn {
+		margin: auto; 
+	}
 }
