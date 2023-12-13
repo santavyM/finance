@@ -5,7 +5,7 @@
 <div class="hypotecni">
     <div class="loan-calculator">
       <div class="top">
-        <h1 class="title">Loan Calculator</h2>
+        <h1 class="title">Loan Calculator</h1>
 
         <form action="#">
           <div class="group">

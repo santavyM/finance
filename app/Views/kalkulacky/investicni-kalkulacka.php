@@ -3,9 +3,7 @@
 <?=$this->section("content")?>
         <div class="mortgage-calculator">
           <div class="top">
-            <div class="heading">
-                <h3>Compound Interest Calculator</h3>
-            </div>
+             <h1 class="title">Investiční Kalkulačka</h1>
             <form class="compound-form">
               <div class="flex">
                 <div class="group">
@@ -31,7 +29,7 @@
                 </div>
               </div>
               <div class="input-group">
-                 <button class="calculate-btn btn-color2">Calculate</button>
+                 <button class="calculate-btn btn-color1">Calculate</button>
               </div>
             </form>
         </div>

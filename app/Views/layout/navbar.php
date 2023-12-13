@@ -1,5 +1,5 @@
 <nav id="desktop-nav">
-<a href="finance">
+<a href="<?= base_url() ?>">
   <div class="logo">Finanční poradce</div></a>
   <div>
     <ul class="nav-links">

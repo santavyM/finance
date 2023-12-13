@@ -106,7 +106,7 @@
         <div class="about-containers">
             <div class="details-container color-container">
                 <div class="article-container">
-                <img src="<?= base_url('assets/photo/12.png'); ?>" alt="financni poradce fotka" class="project-img">
+                <img src="<?= base_url('assets/assety/chart-pie-solid.svg'); ?>" alt="financni poradce fotka" class="project-img">
                 </div>
                 <h2 class="experience-sub-title project-title">Hypotéka</h2>
                 <div class="btn-container">
@@ -116,11 +116,21 @@
             </div>
             <div class="details-container color-container">
                 <div class="article-container">
-                <img src="<?= base_url('assets/photo/12.png'); ?>" alt="financni poradce fotka" class="project-img">
+                <img src="<?= base_url('assets/assety/chart-line-solid.svg'); ?>" alt="financni poradce fotka" class="project-img">
                 </div>
                 <h2 class="experience-sub-title project-title">ROI</h2>
                 <div class="btn-container">
                 <a href="investicni-kalkulacka" target="_blank">
+                    <button class="btn btn-color2 project-btn">ROI</button></a>
+                </div>
+            </div>
+            <div class="details-container color-container">
+                <div class="article-container">
+                <img src="<?= base_url('assets/photo/12.png'); ?>" alt="financni poradce fotka" class="project-img">
+                </div>
+                <h2 class="experience-sub-title project-title">ROI</h2>
+                <div class="btn-container">
+                <a href="https://www.github.com" target="_blank">
                     <button class="btn btn-color2 project-btn">ROI</button></a>
                 </div>
             </div>
