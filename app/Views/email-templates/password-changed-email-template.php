@@ -1,9 +1,15 @@
-<p>Drahy <?= $mail_data['user']->name?>,</p>
+<p>ahoj, <b><?= $mail_data['user']->name ?></b></p>
+<br>
 <p>
-    Změnil jsi svoje heslo
+    Heslo bylo uspesne zmeneno:
+    <br><br>
+    <b>Login : </b> <?= $mail_data['user']->username ?> nebo <?= $mail_data['user']->email ?>
     <br>
-    
-    <b>Login ID: </b> <?= $mail_data['user']->email ?> or <?= $mail_data['user']->username ?>
-    <br>
-    <b>Password: </b> <?= $mail_data['new_password'] ?>
+    <b>Heslo: </b> <?= $mail_data['new_password'] ?>
+</p>
+<br>
+<br>
+------------------------------------------------------
+<p>
+    Email byl automaticky zaslán.
 </p>

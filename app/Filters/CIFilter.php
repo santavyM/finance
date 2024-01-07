@@ -26,15 +26,15 @@ class CIFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if( $arguments[0] == 'guest'){
-            If(CIAuth::check()){
-                return redirect()->route('admin.home');    
+        if( $arguments[0] == 'guest' ){
+            if( CIAuth::check() ){
+                return redirect()->route('admin.home');
             }
         }
 
-        if( $arguments[0] == 'auth'){
-            If(!CIAuth::check()){
-                return redirect()->route('admin.login.form')->with('fail','you must be logged first');    
+        if( $arguments[0] == 'auth' ){
+            if( !CIAuth::check() ){
+                return redirect()->route('admin.login.form')->with('fail','You must be logged in first!');
             }
         }
     }

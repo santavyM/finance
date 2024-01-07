@@ -15,9 +15,10 @@
     <button class="btn btn-color1" onclick="window.open('<?= base_url('assets/photo/resume.pdf'); ?>')">Contact Info</button>
 </div>
 <div id="socials-container">
-<a href="https://www.linkedin.com" target="_blank">
+<a href="<?= get_social_media()->linkedin_url ?>" target="_blank">
+    
     <img src="<?= base_url('assets/assety/linkedin.png'); ?>" alt="LinkedIn profile" class="icon"></a>
-<a href="https://www.github.com" target="_blank">
+<a href="<?= get_social_media()->github_url?>" target="_blank">
     <img src="<?= base_url('assets/assety/github.png'); ?>" alt="Git profile" class="icon"></a>
 </div>
 </div>
@@ -54,49 +55,31 @@
 </section>
 
 <section id="experience">
-<h1 class="title">Zkušenosti</h1>
+<p class="section__text__p1">Mé poslední články</p>
+<h1 class="title">Blog</h1>
 <div class="experience-details-container">
-    <div class="about-containers">
-        <div class="details-container">
-            <h2 class="experience-sub-title">Finance</h2>
-            <div class="article-container">
-                <article>
-                <img src="<?= base_url('assets/assety/checkmark.png'); ?>" alt="checkmark icon" class="icon">
-                    <div>
-                        <h3>Certifikát</h3>
-                        <p>Finanční specialista</p>
-                    </div>
-                </article>
-                <article>
-                <img src="<?= base_url('assets/assety/checkmark.png'); ?>" alt="checkmark icon" class="icon">
-                    <div>
-                        <h3>Certifikát</h3>
-                        <p>ČNB finance</p>
-                    </div>
-                </article>
+        <div class="about-containers">
+        <?php foreach( sidebar_latest_posts() as $post ): ?>
+            <div class="details-container color-container">
+                <div class="article-container">
+                <a class="media align-items-center" href="<?= route_to('read-post',$post->slug) ?>">
+                <img loading="lazy" decoding="async" src="/images/posts/thumb_<?= $post->featured_image ?>" alt="Post Thumbnail" class="w-100"></a>
+                </div>
+                <div class="media-body ml-3">
+                <h3 style="margin-top:-5px"><?= $post->title ?></h3>
+                <p class="mb-0 small"><?= limit_words($post->content,6) ?></p>
             </div>
-        </div>
-        <div class="details-container">
-            <h2 class="experience-sub-title">Právo</h2>
-            <div class="article-container">
-                <article>
-                <img src="<?= base_url('assets/assety/checkmark.png'); ?>" alt="checkmark icon" class="icon">
-                    <div>
-                        <h3>Certifikát</h3>
-                        <p>Finanční specialista</p>
-                    </div>
-                </article>
-                <article>
-                <img src="<?= base_url('assets/assety/checkmark.png'); ?>" alt="checkmark icon" class="icon">
-                    <div>
-                        <h3>Certifikát</h3>
-                        <p>ČNB finance</p>
-                    </div>
-                </article>
             </div>
-        </div>
+            <?php endforeach; ?>
     </div>
 </div>
+<a href="<?= route_to('blog') ?>">
+<div class="contact-info-upper-container">
+    <div class="contact-info-container">
+        <h2>otevřít blog</h2>
+    </div>
+</div>
+</a>
 <img src="<?= base_url('assets/assety/arrow.png'); ?>" alt="arrow icon" class="icon arrow" onclick="location.href='#projects'">
 </section>
 <section id="projects">
@@ -154,7 +137,7 @@
     <div class="contact-info-upper-container">
         <div class="contact-info-container">
             <img src="<?= base_url('assets/assety/email.png'); ?>" alt="email icon email-icon" class="icon contact-icon email-icon">
-            <p><a href="mailto:financniporadce@gmail.com" target="_blank">financniporadce@gmail.com</a></p>
+            <p><a href="mailto:<?= get_settings()->blog_email ?>" target="_blank"><?= get_settings()->blog_email ?></a></p>
         </div>
         <div class="contact-info-container">
             <img src="<?= base_url('assets/assety/linkedin.png'); ?>" alt="linkedin icon" class="icon contact-icon">

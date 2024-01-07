@@ -4,25 +4,14 @@
 	<head>
 		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
-		<title><?= isset($pageTitle) ? $pageTitle: 'New Page Title'; ?></title>
+		<title><?= isset($pageTitle) ? $pageTitle : 'New Page Title'; ?></title>
 
-		<!-- Site favicon -->
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="/santavy/finance/public/backend/vendors/images/apple-touch-icon.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="/santavy/finance/public/backend/vendors/images/favicon-32x32.png"
-		/>
+
 		<link
 			rel="icon"
 			type="image/png"
 			sizes="16x16"
-			href="/santavy/finance/public/backend/vendors/images/favicon-16x16.png"
+			href="/images/blog/<?= get_settings()->blog_favicon ?>"
 		/>
 
 		<!-- Mobile Specific Metas -->
@@ -37,24 +26,30 @@
 			rel="stylesheet"
 		/>
 		<!-- CSS -->
-		<link rel="stylesheet" type="text/css" href="/santavy/finance/public/backend/vendors/styles/core.css" />
+		<link rel="stylesheet" type="text/css" href="/backend/vendors/styles/core.css" />
 		<link
 			rel="stylesheet"
 			type="text/css"
-			href="/santavy/finance/public/backend/vendors/styles/icon-font.min.css"
+			href="/backend/vendors/styles/icon-font.min.css"
 		/>
-		<link rel="stylesheet" type="text/css" href="/santavy/finance/public/backend/vendors/styles/style.css" />
-        <?= $this->renderSection('stylesheets') ?>
+		<link rel="stylesheet" type="text/css" href="/backend/vendors/styles/style.css" />
+		<link rel="stylesheet" href="/extra-assets/ijabo/ijabo.min.css">
+		<link rel="stylesheet" href="/extra-assets/ijaboCropTool/ijaboCropTool.min.css">
+       <?= $this->renderSection('stylesheets') ?>
+	   <style>
+		.swal2-popup{
+			font-size: .87em;
+		}
+	   </style>
 	</head>
 	<body>
-		
+	
 
-        <?php include('inc/header.php') ?>
+		<?php include('inc/header.php') ?>
 
-        <?php include('inc/right-sidebar.php') ?>
-        
-        <?php include('inc/left-sidebar.php') ?>
+		<?php include('inc/right-sidebar.php') ?>
 
+		<?php include('inc/left-sidebar.php') ?>
 		<div class="mobile-menu-overlay"></div>
 
 		<div class="main-container">
@@ -65,14 +60,18 @@
                         <?= $this->renderSection('content') ?>
                     </div>
 				</div>
-				<?php include('inc/footer.php') ?>
+			<?php include('inc/footer.php') ?>
 			</div>
 		</div>
+	
 		<!-- js -->
-		<script src="/santavy/finance/public/backend/vendors/scripts/core.js"></script>
-		<script src="/santavy/finance/public/backend/vendors/scripts/script.min.js"></script>
-		<script src="/santavy/finance/public/backend/vendors/scripts/process.js"></script>
-		<script src="/santavy/finance/public/backend/vendors/scripts/layout-settings.js"></script>
-        <?= $this->renderSection('scripts') ?>
+		<script src="/backend/vendors/scripts/core.js"></script>
+		<script src="/backend/vendors/scripts/script.min.js"></script>
+		<script src="/backend/vendors/scripts/process.js"></script>
+		<script src="/backend/vendors/scripts/layout-settings.js"></script>
+		<script src="/extra-assets/ijabo/ijabo.min.js"></script>
+		<script src="/extra-assets/ijabo/jquery.ijaboViewer.min.js"></script>
+		<script src="/extra-assets/ijaboCropTool/ijaboCropTool.min.js"></script>
+	    <?= $this->renderSection('scripts') ?>
 	</body>
 </html>
