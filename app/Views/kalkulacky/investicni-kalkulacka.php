@@ -1,42 +1,43 @@
 <?=$this->extend("layout/master")?>
 
 <?=$this->section("content")?>
-        <div class="mortgage-calculator">
+    <div class="mortgage-calculator">
           <div class="top">
              <h1 class="title">Investiční Kalkulačka</h1>
-            <form class="compound-form">
+            <form class="calculator calculator-compound-interest calculator-form" id="calculator-compound-interest">
               <div class="flex">
                 <div class="group">
-                    <label for="initialamount">roč. částka</label>
-                    <input type="number" value="1000" id="initialamount" />
+                    <label for="start-investment"> <span>Počáteční jednorázová investice</span> 
+                    <input id="start-investment" type="number" min="0" name="start-investment" value="100000" data-default="100000" > </label> 
                 </div>
                 <div class="group">
-                    <label for="years">Let investování</label>
-                    <input type="number" value="10" id="years" />
+                    <label for="monthly-investment"> <span>Pravidelná měsíční investice</span> 
+                    <input id="monthly-investment" type="number" min="0" name="monthly-investment" value="1000" data-default="1000" > </label> 
                 </div>
                 <div class="group">
-                    <label for="rates">Zhodnocení(%)</label>
-                    <input type="number" value="10" id="rates" />
+                    <label for="annual-interest-rate"> <span>Předpokládaná roční úroková sazba (%)</span> 
+                    <input id="annual-interest-rate" type="number" min="0.1" step="0.1" name="annual-interest-rate" value="<?= get_calculators()->invest ?>" data-default="<?= get_calculators()->invest ?>" > </label>
                 </div>
                 <div class="group">
-                    <label for="rates">roční investice</label>
-                    <select id="compound">
-                        <option value="1">jednou</option>
-                        <option value="4">čtvrtletně</option>
-                        <option value="2">půlročně</option>
-                        <option value="12">měsíčně</option>
-                    </select>
+                    <label for="investment-years"> <span>Na kolik let investování</span> </label>
+                    <input id="investment-years" type="number" min="1" name="investment-years" value="30" data-default="30">
                 </div>
               </div>
-              <div class="input-group">
-                 <button class="calculate-btn btn-color1">Calculate</button>
+              <div class="input-group" style="margin-top:10px">
+                 <button class="calculate-btn btn-color1 calculate">Calculate</button>
               </div>
             </form>
         </div>
-        <div class="results">
-            <h3 id="message"></h3>
-            <canvas id="data-set"></canvas>
+        <div id="calculator-compound-interest-result" class="calculator calculator-results calculator-compound-interest-results" style="text-align:center">
+            <h3><b>Výsledek</b></h3>
+            <div class="calculator-error-info" style="display: none;"><b> Prosím doplň informace.</b></div>
+            <div class="calculator-result-row"> <span class="calculator-result-row-title">Investovaná částka:</span> <b><span class="calculator-result-row-value" data-result="investedValue" data-suffix="Kč">484 000 Kč</span></b></div>
+            <div class="calculator-result-row"> <span class="calculator-result-row-title">Obdržený úrok:</span> <b><span class="calculator-result-row-value" data-result="receivedInterest" data-suffix="Kč">1 877 651 Kč</span></b></div>
+            <div class="calculator-result-row"> <span class="calculator-result-row-title">Výsledná částka:</span> <b><span class="calculator-result-row-value" data-result="finalValue" data-suffix="Kč">2 361 651 Kč</span></b></div> 
+            <div class="results">
+            <canvas id="cicChart" ></canvas>
         </div>
+    </div>
 </div>
     <script type="text/javascript" src="<?= base_url('assets/bootstrap/js/kalkulacka1.js'); ?>"></script>
 <?=$this->endSection()?>

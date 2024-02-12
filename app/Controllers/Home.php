@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
+    protected $helpers = ['url','form','CIMail','CIFunctions','text'];
+
     public function index()
     {
         return view('welcome_message');
@@ -23,5 +25,13 @@ class Home extends BaseController
 
     public function method4() {
         echo view('example-auth');
+    }
+
+    public function method5() {
+        echo view('kalkulacky/kolik-investicni-kalkulacka');
+    }
+
+    public function method6() {
+        echo view('kalkulacky/rent-kalkulacka');
     }
 }

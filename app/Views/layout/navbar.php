@@ -1,6 +1,6 @@
 <nav id="desktop-nav">
 <a href="<?= base_url() ?>">
-  <div class="logo">Finanční poradce</div></a>
+<img loading="prelaod" decoding="async" class="img-fluid" src="/images/blog/<?= get_settings()->blog_logo ?>" alt="<?= get_settings()->blog_title ?>" style="max-width:170px"></a>
   <div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -11,7 +11,7 @@
   </div>
 </nav>
 <nav id="hamburger-nav">
-  <div class="logo">Finanční poradce</div>
+<img loading="prelaod" decoding="async" class="img-fluid" src="/images/blog/<?= get_settings()->blog_logo ?>" alt="<?= get_settings()->blog_title ?>" style="max-width:170px">
   <div class="hamburger-menu">
     <div class="hamburger-icon" onclick="toggleMenu()">
       <span></span>
