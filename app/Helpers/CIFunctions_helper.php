@@ -132,6 +132,15 @@ if( !function_exists('get_reading_time') ){
     }
 }
 
+if( !function_exists('get_reading_time_grid') ){
+    function get_reading_time_grid($content){
+        $word_count = str_word_count(strip_tags($content));
+        $word_per_minute = 100;
+        $m = ceil($word_count / $word_per_minute);
+        return $m;
+    }
+}
+
 /** LIMIT WORDS */
 if( !function_exists('limit_words') ){
     function limit_words($content = null, $limit = 20){

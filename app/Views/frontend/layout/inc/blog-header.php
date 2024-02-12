@@ -1,32 +1,30 @@
-<header class="navigation">
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light px-0">
-      <a class="navbar-brand order-1 py-0" href="/">
-        <img loading="prelaod" decoding="async" class="img-fluid" src="/images/blog/<?= get_settings()->blog_logo ?>" alt="<?= get_settings()->blog_title ?>" style="max-width:170px">
-      </a>
-      <div class="navbar-actions order-3 ml-0 ml-md-4">
-        <button aria-label="navbar toggler" class="navbar-toggler border-0" type="button" data-toggle="collapse"
-          data-target="#navigation"> <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-      <form action="<?= route_to('search-posts') ?>" method="get" class="search order-lg-3 order-md-2 order-3 ml-auto">
-        <input id="search-query" name="q" type="search" placeholder="Search..." autocomplete="off" value="<?= isset($search) ? $search : '' ?>">
-      </form>
-      <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
-        <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
-          <li class="nav-item"> <a class="nav-link" href="/">Home</a>
-          </li>
 
-          <?php foreach( get_sidebar_categories() as $parent_category ): ?>
-          <li class="nav-item"> <a class="nav-link" href="<?= route_to('category-posts',$parent_category->id) ?>" role="button">
-              <?= $parent_category->name ?>
-            </a>
-          </li>
-          <?php endforeach ?>
-          <li class="nav-item"> <a class="nav-link" href="<?= route_to('contact-us') ?>">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+
+<nav id="desktop-nav">
+<a href="<?= base_url() ?>">
+<img loading="prelaod" decoding="async" class="img-fluid" src="/images/blog/<?= get_settings()->blog_logo ?>" alt="<?= get_settings()->blog_title ?>" style="max-width:170px"></a>
+  <div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
   </div>
-</header>
+</nav>
+<nav id="hamburger-nav">
+<img loading="prelaod" decoding="async" class="img-fluid" src="/images/blog/<?= get_settings()->blog_logo ?>" alt="<?= get_settings()->blog_title ?>" style="max-width:170px">
+  <div class="hamburger-menu">
+    <div class="hamburger-icon" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="menu-links">
+      <li><a href="#about" onclick="toggleMenu()">About</a></li>
+      <li><a href="#about" onclick="toggleMenu()">About</a></li>
+      <li><a href="#about" onclick="toggleMenu()">About</a></li>
+      <li><a href="#about" onclick="toggleMenu()">About</a></li>
+    </div>
+  </div>
+</nav>

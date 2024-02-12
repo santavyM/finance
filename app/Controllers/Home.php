@@ -26,4 +26,12 @@ class Home extends BaseController
     public function method4() {
         echo view('example-auth');
     }
+
+    public function method5() {
+        echo view('kalkulacky/kolik-investicni-kalkulacka');
+    }
+
+    public function method6() {
+        echo view('kalkulacky/rent-kalkulacka');
+    }
 }

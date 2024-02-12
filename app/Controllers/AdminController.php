@@ -163,7 +163,7 @@ class AdminController extends BaseController
                                ->update();
 
             if($update){
-                return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Done!, CI4Blog logo has been successfully updated.']);
+                return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Done!, Blog logo has been successfully updated.']);
             }else{
                 return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Something went wrong on updating new logo info.']);
             }

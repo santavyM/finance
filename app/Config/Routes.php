@@ -33,6 +33,8 @@ $routes->get('/', 'Home::method1');
 $routes->get('finance1', 'Home::method1');
 $routes->get('hypotecni-kalkulacka', 'Home::method2');
 $routes->get('investicni-kalkulacka', 'Home::method3');
+$routes->get('kolik-investicni-kalkulacka', 'Home::method5');
+$routes->get('rent-kalkulacka', 'Home::method6');
 $routes->get('blog', 'BlogController::index');
 $routes->get('post/(:any)','BlogController::readPost/$1',['as'=>'read-post']);
 $routes->get('category/(:any)','BlogController::categoryPosts/$1',['as'=>'category-posts']);

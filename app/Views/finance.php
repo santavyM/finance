@@ -111,9 +111,9 @@
                 <div class="article-container">
                 <img src="<?= base_url('assets/photo/12.png'); ?>" alt="financni poradce fotka" class="project-img">
                 </div>
-                <h2 class="experience-sub-title project-title">ROI</h2>
+                <h2 class="experience-sub-title project-title">Kolik investovat?</h2>
                 <div class="btn-container">
-                <a href="https://www.github.com" target="_blank">
+                <a href="kolik-investicni-kalkulacka" target="_blank">
                     <button class="btn btn-color2 project-btn">ROI</button></a>
                 </div>
             </div>
@@ -121,9 +121,9 @@
                 <div class="article-container">
                 <img src="<?= base_url('assets/photo/12.png'); ?>" alt="financni poradce fotka" class="project-img">
                 </div>
-                <h2 class="experience-sub-title project-title">ROI</h2>
+                <h2 class="experience-sub-title project-title">Renta</h2>
                 <div class="btn-container">
-                <a href="https://www.github.com" target="_blank">
+                <a href="rent-kalkulacka" target="_blank">
                     <button class="btn btn-color2 project-btn">ROI</button></a>
                 </div>
             </div>

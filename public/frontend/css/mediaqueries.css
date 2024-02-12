@@ -29,7 +29,7 @@
         height: fit-content;
     }
     section {
-        margin: 0 5%;
+        margin: 0;
     }
     .section__pic-container {
         width: 275px;
@@ -40,6 +40,90 @@
         margin-top: 0;
     }
 
+
+    .grid-container {
+        grid-template-rows: repeat(5, 75px);
+        grid-template-columns: repeat(9, 75px);
+        grid-gap: 2em 2em;
+        grid-auto-rows: 100px;
+      }
+
+      .grid-button-container button {
+        display: flex;
+        justify-content: space-between;
+        margin: auto;
+        margin-top: 5px;
+        padding: 10px;
+      }
+
+      .main-post img {
+        gap: 0px;
+        height: 395px;
+    }
+
+    .main-post-back img {
+        height: 0px;
+        visibility: hidden;
+    }	
+}
+
+@media screen and (max-width: 992px) {
+    .grid-container {
+        grid-template-rows: repeat(5, 90px);
+        grid-template-columns: repeat(6, 90px);
+        grid-gap: 2em 2em;
+        grid-auto-rows: 100px;
+      }
+
+      .main-post img {
+        gap: 0px;
+        height: 450px;
+    }
+
+    .main-post-back img {
+        visibility: visible;
+        height: 150px;
+    }	
+
+    .category-sidebar {
+        visibility: hidden;
+      }
+
+     .flip-card {
+	grid-row: 1/5;
+	grid-column: 1/7;
+	} 
+}
+
+@media screen and (max-width: 750px) {
+    .grid-container {
+        grid-template-rows: repeat(5, 90px);
+        grid-template-columns: repeat(4, 90px);
+        grid-gap: 2em 2em;
+        grid-auto-rows: 100px;
+      }
+
+      .main-post img {
+        gap: 0px;
+        height: 450px;
+    }
+
+    .main-post-back img {
+        height: 0px;
+        visibility: hidden;
+    }	
+
+     .flip-card {
+	grid-row: 1/5;
+	grid-column: 1/5;
+	} 
+    .latest-posts {
+        grid-row: span 4;
+        grid-column: span 4;
+      }
+      .latest-posts img {
+        height: 240px;
+      }
 }
 
 @media screen and (max-width: 600px) {
@@ -47,7 +131,7 @@
         height: 40vh;
     }
     #profile {
-        height: 50vh;
+        height: 20vh;
         margin-bottom: 0;
     }
 
@@ -148,11 +232,4 @@
     .mortgage-calculator .calculate-btn {
 		margin: auto; 
 	}
-}
-
-@media screen and (max-width: 1050px){
-    .mortgage-calculator {
-        width: 90%;
-        max-width: 900px;
-    }
 }

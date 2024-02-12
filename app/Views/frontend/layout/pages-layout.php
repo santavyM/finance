@@ -21,16 +21,14 @@
   <!-- theme meta -->
   <meta name="theme-name" content="reporter" />
 
-	<!-- # Google Fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Neuton:wght@700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+	
 
 	<!-- # CSS Plugins -->
 	<link rel="stylesheet" href="/frontend/plugins/bootstrap/bootstrap.min.css">
 
 	<!-- # Main Style Sheet -->
 	<link rel="stylesheet" href="/frontend/css/style.css">
+	<link rel="stylesheet" href="/frontend/css/mediaqueries.css">
     <?= $this->renderSection('stylesheets') ?>
 </head>
 
@@ -46,10 +44,12 @@
   </section>
 </main>
 
-<?php include('inc/footer.php') ?>
+<?php include('inc/blog-footer.php') ?>
 
 
 <!-- # JS Plugins -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
+<script type="text/javascript" src="<?= base_url('assets/bootstrap/js/script.js'); ?>"></script>
 <script src="/frontend/plugins/jquery/jquery.min.js"></script>
 <script src="/frontend/plugins/bootstrap/bootstrap.min.js"></script>
 

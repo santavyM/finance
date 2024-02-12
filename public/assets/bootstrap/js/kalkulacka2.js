@@ -1,10 +1,10 @@
 const context = document.getElementById("data-set").getContext("2d");
 let line = new Chart(context, {});
 //Values from the form
-const initialAmount = document.getElementById("initialamount");
-const years = document.getElementById("years");
-const rates = document.getElementById("rates");
-const compound = document.getElementById("compound");
+const initialAmount = document.getElementById("start-investment");
+const years = document.getElementById("monthly-investment");
+const rates = document.getElementById("interest-rate");
+const compound = document.getElementById("investment-years");
 
 //The calculate button
 const button = document.querySelector(".input-group button");
