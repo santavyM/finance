@@ -3,15 +3,16 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-if( !function_exists('sendEmail')){
+/** SEND EMAIL Using PHPMailer LIBRARY */
+if( !function_exists('sendEmail') ){
     function sendEmail($mailConfig){
-        require 'C:/xampp/htdocs/santavy/finance/public/PHPMailer/src/Exception.php';
-        require 'C:/xampp/htdocs/santavy/finance/public/PHPMailer/src/PHPMailer.php';
-        require 'C:/xampp/htdocs/santavy/finance/public/PHPMailer/src/SMTP.php';
+        require 'PHPMailer/src/Exception.php';
+        require 'PHPMailer/src/PHPMailer.php';
+        require 'PHPMailer/src/SMTP.php';
 
         $mail = new PHPMailer(true);
         $mail->SMTPDebug = 0;
-        $mail->isSMTP(true);
+        $mail->isSMTP();
         $mail->Host = env('EMAIL_HOST');
         $mail->SMTPAuth = true;
         $mail->Username = env('EMAIL_USERNAME');
@@ -30,5 +31,3 @@ if( !function_exists('sendEmail')){
         }
     }
 }
-
-?>

@@ -1,66 +1,37 @@
 <?=$this->extend("layout/master")?>
 
 <?=$this->section("content")?>
-
-<div class="hypotecni">
-    <div class="loan-calculator">
-      <div class="top">
-        <h1 class="title">Loan Calculator</h1>
-
-        <form action="#">
-          <div class="group">
-            <div class="title-calculator">Výška úvěru
-            </div>
-            <div class="group1">
-              <input type="text" value="30000" class="loan-amount"></input>
-              <span class="after">Kč</span>
-            </div>
-          </div>
-
-          <div class="group">
-            <div class="title-calculator">úroková míra
-            </div>
-            <div class="group1">
-              <input type="text" value="8.5" class="interest-rate" />
-              <span class="after">%</span>
-            </div>
-          </div>
-
-          <div class="group">
-            <div class="title-calculator">Doba splácení 
-            </div>
-            <div class="group1">
-              <input type="text" value="240" class="loan-tenure" />
-              <span class="after">měsíců</span>
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <div class="result">
-        <div class="left">
-          <div class="loan-emi">
-            <h3>Loan EMI</h3>
-            <div class="value">123</div>
-          </div>
-
-          <div class="total-interest">
-            <h3>Total Interest Payable</h3>
-            <div class="value">1234</div>
-          </div>
-
-          <div class="total-amount">
-            <h3>celková částka</h3>
-            <div class="value">12345</div>
-          </div>
-
-          <button class="calculate-btn btn-color2">Calculate</button>
+<div class="mortgage-calculator">
+          <div class="top">
+             <h1 class="title">Hypoteční Kalkulačka</h1>
+            <form class="calculator calculator-loan calculator-form" id="calculator-loan">
+              <div class="flex">
+                <div class="group">
+                    <label for="start-investment"> <span>Počáteční jednorázová investice</span> 
+                    <input id="start-investment" type="number" min="0" name="start-investment" value="100000" data-default="100000" > </label> 
+                </div>
+                <div class="group">
+                    <label for="annual-interest-rate"> <span>Předpokládaná úroková sazba (%)</span> 
+                    <input id="annual-interest-rate" type="number" min="0.01" step="0.01" name="annual-interest-rate" value="<?= get_calculators()->mortgage ?>" data-default="<?= get_calculators()->mortgage ?>" > </label>
+                </div>
+                <div class="group">
+                    <label for="investment-years"> <span>Na kolik let investování</span> </label>
+                    <input id="investment-years" type="number" min="1" name="investment-years" value="30" data-default="30">
+                </div>
+              </div>
+              <div class="input-group" style="margin-top:10px">
+                 <button class="calculate-btn btn-color1 calculate">Calculate</button>
+              </div>
+            </form>
         </div>
-
-        <div class="right">
-          <canvas id="myChart" width="400" height="400"></canvas>
+        <div id="calculator-compound-interest-result" class="calculator calculator-results calculator-compound-interest-results" style="text-align:center">
+            <h3><b>Výsledek</b></h3>
+            <div class="calculator-error-info" style="display: none;"><b> Prosím doplň informace.</b></div>
+            <div class="calculator-result-row"> <span class="calculator-result-row-title">Měsíční splátka:</span> <b><span class="calculator-result-row-value" data-result="investedValue" data-suffix="Kč">484 000 Kč</span></b></div>
+            <div class="calculator-result-row"> <span class="calculator-result-row-title">Zaplacený úrok:</span> <b><span class="calculator-result-row-value" data-result="receivedInterest" data-suffix="Kč">1 877 651 Kč</span></b></div>
+            <div class="results">
+            <canvas id="icChart" width="400px"></canvas>
         </div>
-      </div>
     </div>
 </div>
 

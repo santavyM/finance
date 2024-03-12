@@ -9,5 +9,5 @@
         </ul>
     </div>
 </nav>
-<p>Copyright &#169; 2023 Finanční poradce. All Rights Reserved.</p>
+<p> &copy; Copyright <script>document.write(new Date().getFullYear());</script> - <?= get_settings()->blog_title ?> All Rights Reserved.</p>
 </footer>
