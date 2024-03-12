@@ -656,7 +656,19 @@ class AdminController extends BaseController
                         'is_unique'=>'This post title is already exists',
                     ]
                 ],
-                
+                'content'=>[
+                    'rules'=>'required|min_length[20]',
+                    'errors'=>[
+                        'required'=>'Post content is required',
+                        'min_length'=>'Post content must have atleast 20 characters',
+                    ]
+                ],
+                'category'=>[
+                    'rules'=>'required',
+                    'errors'=>[
+                        'required'=>'Select post category'
+                    ]
+                ],
                 'featured_image'=>[
                     'rules'=>'uploaded[featured_image]|is_image[featured_image]|max_size[featured_image,2048]',
                     'errors'=>[

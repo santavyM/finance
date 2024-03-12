@@ -54,6 +54,34 @@
         <img src="<?= base_url('assets/assety/arrow.png'); ?>" alt="arrow icon" class="icon arrow" onclick="location.href='#projects'">
 </section>
 
+<section id="experience">
+<p class="section__text__p1">Mé poslední články</p>
+<h1 class="title">Blog</h1>
+<div class="experience-details-container">
+        <div class="about-containers">
+        <?php foreach( sidebar_latest_posts() as $post ): ?>
+            <div class="details-container color-container">
+                <div class="article-container">
+                <a class="media align-items-center" href="<?= route_to('read-post',$post->slug) ?>">
+                <img loading="lazy" decoding="async" src="/images/posts/thumb_<?= $post->featured_image ?>" alt="Post Thumbnail" class="w-100"></a>
+                </div>
+                <div class="media-body ml-3">
+                <h3 style="margin-top:-5px"><?= $post->title ?></h3>
+                <p class="mb-0 small"><?= limit_words($post->content,6) ?></p>
+            </div>
+            </div>
+            <?php endforeach; ?>
+    </div>
+</div>
+<a href="<?= route_to('blog') ?>">
+<div class="contact-info-upper-container">
+    <div class="contact-info-container">
+        <h2>otevřít blog</h2>
+    </div>
+</div>
+</a>
+<img src="<?= base_url('assets/assety/arrow.png'); ?>" alt="arrow icon" class="icon arrow" onclick="location.href='#projects'">
+</section>
 <section id="projects">
     <p class="section__text__p1">Kalkulačky</p>
     <h1 class="title">Kalkulačky</h1>
