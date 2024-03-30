@@ -104,11 +104,10 @@ jQuery(function($) {
 
             var months = investmentYears * 12;
             var monthlyReturn = Math.pow(1 + annualInterestRate, 1/12) -1;
-            var monthlyContribution = (goalInvestment - startInvestment * Math.pow(1 + monthlyReturn, months)) / ((Math.pow(1 + monthlyReturn, months) - 1) / monthlyReturn);
-            console.log("mesicne: " + monthlyContribution + ".\t" + investmentYears + ".\t" + goalInvestment + ".\t" + startInvestment + ".\t" + annualInterestRate);
+            var monthlyContribution = (goalInvestment - startInvestment * Math.pow(1 + monthlyReturn, months)) / 
+            ((Math.pow(1 + monthlyReturn, months) - 1) / monthlyReturn);
             var totalInvested = startInvestment + monthlyContribution * months;
             var totalReturn = goalInvestment - totalInvested;
-            console.log("investováno : " + numberWithSpaces(totalInvested) + "  zhodnoceno : " + numberWithSpaces(totalReturn));
 
             const resultInvestedValue = $('.calculator-result-row-value[data-result=investedValue]');
             const resultReceivedInterest = $('.calculator-result-row-value[data-result=receivedInterest]');
@@ -360,8 +359,8 @@ jQuery(function($) {
         console.log("investováno : " + numberWithSpaces(totalInvested) + "  zhodnoceno : " + numberWithSpaces(totalReturn));
 
         let ctx = document.getElementById('ficChart').getContext('2d');
-        if (null === icChart) {
-            icChart = new Chart(ctx, {
+        if (null === ficChart) {
+            ficChart = new Chart(ctx, {
                 type: "pie",
                 data: {
                   labels: ["Zhodnocení", "Investováno"],
@@ -375,8 +374,8 @@ jQuery(function($) {
                 },
               });
         } else {
-            icChart.data.datasets[0].data = [totalReturn, totalInvested];
-            icChart.update()
+            ficChart.data.datasets[0].data = [totalReturn, totalInvested];
+            ficChart.update()
         }
     }
     function redrawRentChart(renta, startInvestment, annualInterestRate){

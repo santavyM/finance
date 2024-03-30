@@ -13,17 +13,17 @@
                 <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" class="ci_csrf_data">
                 <input type="hidden" name="category_id">
                 <div class="form-group">
-                    <label for=""><b>Category name</b></label>
+                    <label for=""><b>Název Kategorie</b></label>
                     <input type="text" class="form-control" name="category_name" placeholder="Enter category name">
                     <span class="text-danger error-text category_name_error"></span>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                    Close
+                    Zavřít
                 </button>
                 <button type="submit" class="btn btn-primary action">
-                    Save changes
+                    Uložit
                 </button>
             </div>
         </form>

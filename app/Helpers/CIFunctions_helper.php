@@ -119,9 +119,6 @@ if( !function_exists('current_route_name') ){
     }
 }
 
-/**
- * FRONTEND FUNCTIONS
- */
 
  /** GETTING PARENT CATEGORIES */
 if( !function_exists('get_parent_categories') ){
@@ -132,7 +129,7 @@ if( !function_exists('get_parent_categories') ){
 }
 
 
-/** Date format eg: JAN 12, 2024 */
+/** Date format */
 if( !function_exists('date_formatter') ){
     function date_formatter($date){
         return Carbon::createFromFormat('Y-m-d H:i:s',$date)->isoFormat('ll');
@@ -149,7 +146,7 @@ if( !function_exists('get_reading_time') ){
     }
 }
 
-/** CALCULATE READING DURATION for grid */
+/** CALCULATE READING DURATION FOR GRID */
 if( !function_exists('get_reading_time_grid') ){
     function get_reading_time_grid($content){
         $word_count = str_word_count(strip_tags($content));
@@ -306,6 +303,7 @@ if( !function_exists('get_theme') ){
     }
 }
 
+/** GET ACTIVE THEME */
 if( !function_exists('getActiveTheme') ){
     function getActiveTheme()
     {

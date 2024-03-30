@@ -11,5 +11,5 @@
 <br>
 ------------------------------------------------------
 <p>
-    Email byl automaticky zaslán.
+    Diky, ze vyuzivate nase sluzby
 </p>

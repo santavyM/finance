@@ -5,18 +5,8 @@
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <div class="title">
-                <h4>Categories</h4>
+                <h4>Kategorie</h4>
             </div>
-            <nav aria-label="breadcrumb" role="navigation">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="<?= route_to('admin.home') ?>">Home</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                        Categories
-                    </li>
-                </ol>
-            </nav>
         </div>
     </div>
 </div>
@@ -27,11 +17,11 @@
             <div class="card-header">
                 <div class="clearfix">
                     <div class="pull-left">
-                        Categories
+                        Kategorie
                     </div>
                     <div class="pull-right">
                         <a href="" class="btn btn-default btn-sm p-0" role="button" id="add_category_btn">
-                            <i class="fa fa-plus-circle"></i> Add category
+                            <i class="fa fa-plus-circle"></i> Přidat Kategorii
                         </a>
                     </div>
                 </div>
@@ -40,9 +30,9 @@
                 <table class="table table-sm table-borderless table-hover table-striped" id="categories-table">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Category name</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">id</th>
+                            <th scope="col">Název Kategorie</th>
+                            <th scope="col">Funkce</th>
                             <th scope="col" hidden>Ordering</th>
                         </tr>
                     </thead>
@@ -74,8 +64,8 @@
       $(document).on('click','#add_category_btn', function(e){
          e.preventDefault();
          var modal = $('body').find('div#category-modal');
-         var modal_title = 'Add category';
-         var modal_btn_text = 'ADD';
+         var modal_title = 'Přidat Kategorii';
+         var modal_btn_text = 'Přidej';
          modal.find('.modal-title').html(modal_title);
          modal.find('.modal-footer > button.action').html(modal_btn_text);
          modal.find('input.error-text').html('');
@@ -151,8 +141,8 @@
            var category_id = $(this).data('id');
            var url = "<?= route_to('get-category') ?>";
            $.get(url,{ category_id:category_id }, function(response){
-                 var modal_title = 'Edit category';
-                 var modal_btn_text = 'Save changes';
+                 var modal_title = 'Upravit Kategorii';
+                 var modal_btn_text = 'Uložit';
                  var modal = $('body').find('div#edit-category-modal');
                  modal.find('form').find('input[type="hidden"][name="category_id"]').val(category_id);
                  modal.find('.modal-title').html(modal_title);
@@ -212,12 +202,12 @@
          var category_id = $(this).data('id');
          var url = "<?= route_to('delete-category') ?>";
          swal.fire({
-            title:'Are you sure?',
-            html:'You want to delete this category',
+            title:'POZOR',
+            html:'Opravdu chcete odstranit tuto kategorii?',
             showCloseButton:true,
             showCancelButton:true,
-            cancelButtonText:'Cancel',
-            confirmButtonText:'Yes, Delete',
+            cancelButtonText:'Ne',
+            confirmButtonText:'Ano, odstranit',
             cancelButtonColor:'#d33',
             confirmButtonColor:'#3085d6',
             width:300,

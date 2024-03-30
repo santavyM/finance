@@ -2,10 +2,7 @@
 <nav>
     <div class="nav-links-container">
         <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="admin/login">Admin panel</a></li>
         </ul>
     </div>
 </nav>

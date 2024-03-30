@@ -57,10 +57,12 @@ $routes->group('admin', static function($routes){
           $routes->post('update-blog-logo','AdminController::updateBlogLogo',['as'=>'update-blog-logo']);
           $routes->post('update-blog-favicon','AdminController::updateBlogFavicon',['as'=>'update-blog-favicon']);
           $routes->post('update-social-media','AdminController::updateSocialMedia',['as'=>'update-social-media']);
+          //CALCULATORS
           $routes->post('update-calculators','AdminController::updateCalculators',['as'=>'update-calculators']);
+          //THEME
           $routes->post('upload-theme', 'AdminController::uploadTheme', ['as' => 'upload-theme']);
           $routes->post('select-theme', 'AdminController::selectTheme', ['as' => 'select-theme']);
-          //kategorie
+          //CATEGORY
           $routes->get('categories','AdminController::categories',['as'=>'categories']);
           $routes->post('add-category','AdminController::addCategory',['as'=>'add-category']);
           $routes->get('get-categories','AdminController::getCategories',['as'=>'get-categories']);

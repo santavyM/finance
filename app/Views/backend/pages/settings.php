@@ -5,18 +5,8 @@
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <div class="title">
-                <h4>Settings</h4>
+                <h4>nastavení</h4>
             </div>
-            <nav aria-label="breadcrumb" role="navigation">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="<?= route_to('admin.home') ?>">Home</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                        Settings
-                    </li>
-                </ol>
-            </nav>
         </div>
     </div>
 </div>
@@ -25,19 +15,19 @@
     <div class="tab">
         <ul class="nav nav-tabs customtab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#general_settings" role="tab" aria-selected="true">General settings</a>
+                <a class="nav-link active" data-toggle="tab" href="#general_settings" role="tab" aria-selected="true">Hlavní nastavení</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#logo_favicon" role="tab" aria-selected="false">Logo & Favicon</a>
+                <a class="nav-link" data-toggle="tab" href="#logo_favicon" role="tab" aria-selected="false">Logo & Ikonka</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#social_media" role="tab" aria-selected="false">Social media</a>
+                <a class="nav-link" data-toggle="tab" href="#social_media" role="tab" aria-selected="false">Sociální sítě</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#calculators" role="tab" aria-selected="false">Calculators</a>
+                <a class="nav-link" data-toggle="tab" href="#calculators" role="tab" aria-selected="false">Kalkulačky</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#theme" role="tab" aria-selected="false">Theme</a>
+                <a class="nav-link" data-toggle="tab" href="#theme" role="tab" aria-selected="false">Styl</a>
             </li>
         </ul>
         <div class="tab-content">
@@ -48,15 +38,15 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Blog title</label>
-                                    <input type="text" class="form-control" name="blog_title" placeholder="Enter blog title" value="<?= get_settings()->blog_title ?>">
+                                    <label for="">Název webu</label>
+                                    <input type="text" class="form-control" name="blog_title" placeholder="Vlož název webu" value="<?= get_settings()->blog_title ?>">
                                     <span class="text-danger error-text blog_title_error"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Blog email</label>
-                                    <input type="text" class="form-control" name="blog_email" placeholder="Enter blog email" value="<?= get_settings()->blog_email ?>">
+                                    <label for="">Email webu</label>
+                                    <input type="text" class="form-control" name="blog_email" placeholder="Vlož email" value="<?= get_settings()->blog_email ?>">
                                     <span class="text-danger error-text blog_email_error"></span>
                                 </div>
                             </div>
@@ -64,26 +54,26 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Blog phone no</label>
-                                    <input type="text" class="form-control" name="blog_phone" placeholder="Enter blog phone" value="<?= get_settings()->blog_phone ?>">
+                                    <label for="">Telefonní číslo webu</label>
+                                    <input type="text" class="form-control" name="blog_phone" placeholder="Vlož telefonní číslo" value="<?= get_settings()->blog_phone ?>">
                                     <span class="text-danger error-text blog_phone_error"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Blog meta keywords</label>
-                                    <input type="text" class="form-control" name="blog_meta_keywords" placeholder="Enter blog meta keywords" value="<?= get_settings()->blog_meta_keywords ?>">
+                                    <label for="">Klíčová slova pro optimalizaci vyhledávače</label>
+                                    <input type="text" class="form-control" name="blog_meta_keywords" placeholder="Vlož kláčová slova" value="<?= get_settings()->blog_meta_keywords ?>">
                                     <span class="text-danger error-text blog_meta_keywords_error"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="">Blog meta description</label>
-                            <textarea name="blog_meta_description" id="" cols="4" rows="3" class="form-control" placeholder="Write blog meta description"><?= get_settings()->blog_meta_description ?></textarea>
+                            <label for="">Popis pro optimalizaci vyhledávače</label>
+                            <textarea name="blog_meta_description" id="" cols="4" rows="3" class="form-control" placeholder="Napíš popis"><?= get_settings()->blog_meta_description ?></textarea>
                             <span class="text-danger error-text blog_meta_description_error"></span>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Uložit</button>
                         </div>
                     </form>
                 </div>
@@ -91,33 +81,45 @@
             <div class="tab-pane fade" id="logo_favicon" role="tabpanel">
                 <div class="pd-20">
                     <div class="row">
-                        <div class="col-md-6">
-                            <h5>Set blog logo</h5>
-                            <div class="mb-2 mt-1" style="max-width: 200px;">
-                                 <img src="" alt="" class="img-thumbnail" id="logo-image-preview" data-ijabo-default-img="/images/blog/<?= get_settings()->blog_logo ?>">
+                        <div class="col-md-9">
+                            <div class="card card-box mb-2">
+                                <div class="card-body">
+                                    <h5><b>Nastav Logo</b></h5>
+                                    <div class="mb-2 mt-1" style="max-width: 200px;">
+                                        <img src="" alt="" class="img-thumbnail" id="logo-image-preview" data-ijabo-default-img="/images/blog/<?= get_settings()->blog_logo ?>">
+                                    </div>
+                                    <form action="<?= route_to('update-blog-logo') ?>" method="post" enctype="multipart/form-data" id="changeBlogLogoForm">
+                                        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" class="ci_csrf_data">
+                                        <div class="mb-2">
+                                            <input type="file" name="blog_logo" id="" class="form-control">
+                                            <span class="text-danger error-text"></span>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Uložit</button>
+                                    </form>
+                                </div>
                             </div>
-                            <form action="<?= route_to('update-blog-logo') ?>" method="post" enctype="multipart/form-data" id="changeBlogLogoForm">
-                                <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" class="ci_csrf_data">
-                                <div class="mb-2">
-                                    <input type="file" name="blog_logo" id="" class="form-control">
-                                    <span class="text-danger error-text"></span>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Change logo</button>
-                            </form>
                         </div>
-                        <div class="col-md-6">
-                              <h5>Set blog favicon</h5>
-                              <div class="mb-2 mt-1" style="max-width: 100px;">
-                                    <img src="" alt="" class="img-thumbnail" id="favicon-image-preview" data-ijabo-default-img="/images/blog/<?= get_settings()->blog_favicon ?>">
-                              </div>
-                              <form action="<?= route_to('update-blog-favicon') ?>" method="post" enctype="multipart/form-data" id="changeBlogFaviconForm">
-                                <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" class="ci_csrf_data">
-                                <div class="mb-2">
-                                    <input type="file" name="blog_favicon" id="" class="form-control">
-                                    <span class="text-danger error-text"></span>
+                    </div>
+                    
+                    <!-- Sekce pro nastavení ikonky -->
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="card card-box mb-2">
+                                <div class="card-body">
+                                    <h5><b>Nastav Ikonku</b></h5>
+                                    <div class="mb-2 mt-1" style="max-width: 100px;">
+                                        <img src="" alt="" class="img-thumbnail" id="favicon-image-preview" data-ijabo-default-img="/images/blog/<?= get_settings()->blog_favicon ?>">
+                                    </div>
+                                    <form action="<?= route_to('update-blog-favicon') ?>" method="post" enctype="multipart/form-data" id="changeBlogFaviconForm">
+                                        <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" class="ci_csrf_data">
+                                        <div class="mb-2">
+                                            <input type="file" name="blog_favicon" id="" class="form-control">
+                                            <span class="text-danger error-text"></span>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Uložit</button>
+                                    </form>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Change favicon</button>
-                              </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -130,21 +132,21 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Facebook URL</label>
-                                    <input type="text" class="form-control" name="facebook_url" placeholder="Enter facebook page URL" value="<?= get_social_media()->facebook_url ?>">
+                                    <input type="text" class="form-control" name="facebook_url" placeholder="Vlož URL" value="<?= get_social_media()->facebook_url ?>">
                                     <span class="text-danger error-text facebook_url_error"></span>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Twitter URL</label>
-                                    <input type="text" class="form-control" name="twitter_url" placeholder="Enter twitter URL" value="<?= get_social_media()->twitter_url ?>">
+                                    <input type="text" class="form-control" name="twitter_url" placeholder="Vlož URL" value="<?= get_social_media()->twitter_url ?>">
                                     <span class="text-danger error-text twitter_url_error"></span>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Instagram URL</label>
-                                    <input type="text" class="form-control" name="instagram_url" placeholder="Enter instagram URL" value="<?= get_social_media()->instagram_url ?>">
+                                    <input type="text" class="form-control" name="instagram_url" placeholder="Vlož URL" value="<?= get_social_media()->instagram_url ?>">
                                     <span class="text-danger error-text instagram_url_error"></span>
                                 </div>
                             </div>
@@ -153,27 +155,27 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">YouTube URL</label>
-                                    <input type="text" class="form-control" name="youtube_url" placeholder="Enter YouTube channel URL" value="<?= get_social_media()->youtube_url ?>">
+                                    <input type="text" class="form-control" name="youtube_url" placeholder="Vlož URL" value="<?= get_social_media()->youtube_url ?>">
                                     <span class="text-danger error-text youtube_url_error"></span>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">GitHub URL</label>
-                                    <input type="text" class="form-control" name="github_url" placeholder="Enter Github URL" value="<?= get_social_media()->github_url ?>">
+                                    <input type="text" class="form-control" name="github_url" placeholder="Vlož URL" value="<?= get_social_media()->github_url ?>">
                                     <span class="text-danger error-text github_url_error"></span>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Linkedin URL</label>
-                                    <input type="text" class="form-control" name="linkedin_url" placeholder="Enter Linkedin URL" value="<?= get_social_media()->linkedin_url ?>">
+                                    <input type="text" class="form-control" name="linkedin_url" placeholder="Vlož URL" value="<?= get_social_media()->linkedin_url ?>">
                                     <span class="text-danger error-text linkedin_url_error"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            <button type="submit" class="btn btn-primary">Uložit</button>
                         </div>
                     </form>
                 </div>
@@ -187,64 +189,84 @@
                                 <div class="card card-box mb-2">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for=""><b>Theme Name</b></label>
+                                            <label for=""><b>Název Stylu</b></label>
                                             <input type="text" class="form-control" placeholder="Enter theme name" name="theme_name">
                                             <span class="text-danger error-text theme_name_error"></span>
                                         </div>
                                         <div class="form-group">
-                                            <label for=""><b>Theme File (.css or .less)</b></label>
+                                            <label for=""><b>Vlož soubor (.css nebo .less)</b></label>
                                             <input type="file" name="theme_file" class="form-control-file form-control" height="auto">
                                             <span class="text-danger error-text theme_file_error"></span>
                                         </div>
+                                        <button type="submit" class="btn btn-primary">Nahrát styl</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Upload Theme</button>
                     </form>
                     <form action="<?= route_to('select-theme') ?>" method="post" id="selectThemeForm">
                     <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" class="ci_csrf_data">
-                    <div class="form-group">
-                        <label for="theme">Vyberte téma:</label>
-                        <select name="theme" id="theme" class="form-control">
-                            <?php foreach ($themes as $theme): ?>
-                                <option value="<?= $theme->theme_file ?>"><?= $theme->theme_name ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="card card-box mb-2">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="theme"><b>Vyberte téma:</b></label>
+                                        <select name="theme" id="theme" class="form-control">
+                                            <?php foreach ($themes as $theme): ?>
+                                                <option value="<?= $theme->theme_file ?>"><?= $theme->theme_name ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        <span class="text-danger error-text theme_error"></span>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Použít styl</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Použít téma</button>
                 </form>
                 </div>
             </div>
+            
+            
+            
             <div class="tab-pane fade" id="calculators" role="tabpanel">
                 <div class="pd-20">
                     <form action="<?= route_to('update-calculators') ?>" method="post" id="calculators_form">
                         <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" class="ci_csrf_data">
                         <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="">Mortgage</label>
-                                    <input type="number" class="form-control" name="mortgage" step="0.01" placeholder="Enter facebook page URL" value="<?= get_calculators()->mortgage ?>">
-                                    <span class="text-danger error-text facebook_url_error"></span>
+                            <div class="col-md-9">
+                                <div class="card card-box mb-2">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for=""><b>Hypotéka - úrok</b></label>
+                                                    <input type="number" class="form-control" name="mortgage" step="0.01" placeholder="Enter mortgage interest rate" value="<?= get_calculators()->mortgage ?>">
+                                                    <span class="text-danger error-text mortgage_error"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for=""><b>Renta - úrok</b></label>
+                                                    <input type="number" class="form-control" name="rent" step="0.01" placeholder="Enter rent interest rate" value="<?= get_calculators()->rent ?>">
+                                                    <span class="text-danger error-text rent_error"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for=""><b>Investice - úrok</b></label>
+                                                    <input type="number" class="form-control" name="invest" step="0.01" placeholder="Enter investment interest rate" value="<?= get_calculators()->invest ?>">
+                                                    <span class="text-danger error-text invest_error"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Uložit</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="">Rent</label>
-                                    <input type="number" class="form-control" name="rent" step="0.01" placeholder="Enter twitter URL" value="<?= get_calculators()->rent ?>">
-                                    <span class="text-danger error-text twitter_url_error"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="">Invest</label>
-                                    <input type="number" class="form-control" name="invest" step="0.01" placeholder="Enter instagram URL" value="<?= get_calculators()->invest ?>">
-                                    <span class="text-danger error-text invest_error"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                     </form>
                 </div>

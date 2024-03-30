@@ -24,7 +24,7 @@
                 </div>
               </div>
               <div class="input-group" style="margin-top:10px">
-                 <button class="calculate-btn btn-color1 calculate">Calculate</button>
+                 <button class="calculate-btn btn-color1 calculate">Spočítej</button>
               </div>
             </form>
         </div>

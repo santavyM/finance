@@ -84,18 +84,6 @@
 
 <?= $this->endSection() ?>
 <?= $this->section('stylesheets') ?>
-<link rel="stylesheet" href="/extra-assets/share_buttons/jquery.floating-social-share.min.css">
 <?= $this->endSection() ?>
 <?= $this->section('scripts') ?>
-<script src="/extra-assets/share_buttons/jquery.floating-social-share.min.js"></script>
-<script>
-    $('body').floatingSocialShare({
-        buttons: [
-            "facebook", "linkedin", "pinterest", "reddit", "telegram", "tumblr", "twitter", "viber", "vk",
-            "whatsapp"
-        ],
-        text: "share with: ",
-        url: "<?= current_url() ?>"
-    });
-</script>
 <?= $this->endSection() ?>

@@ -47,40 +47,11 @@
                     </div>
                 </div>
                 <div class="text-container">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo accusamus blanditiis dolores tenetur, a, minima alias hic enim inventore, asperiores maxime distinctio ut pariatur commodi expedita ullam. Facilis, molestias eum.</p>
+                    <p><?= get_user_1()->bio ?>.</p>
                 </div>
             </div>
         </div>
         <img src="<?= base_url('assets/assety/arrow.png'); ?>" alt="arrow icon" class="icon arrow" onclick="location.href='#projects'">
-</section>
-
-<section id="experience">
-<p class="section__text__p1">Mé poslední články</p>
-<h1 class="title">Blog</h1>
-<div class="experience-details-container">
-        <div class="about-containers">
-        <?php foreach( sidebar_latest_posts() as $post ): ?>
-            <div class="details-container color-container">
-                <div class="article-container">
-                <a class="media align-items-center" href="<?= route_to('read-post',$post->slug) ?>">
-                <img loading="lazy" decoding="async" src="/images/posts/thumb_<?= $post->featured_image ?>" alt="Post Thumbnail" class="w-100"></a>
-                </div>
-                <div class="media-body ml-3">
-                <h3 style="margin-top:-5px"><?= $post->title ?></h3>
-                <p class="mb-0 small"><?= limit_words($post->content,6) ?></p>
-            </div>
-            </div>
-            <?php endforeach; ?>
-    </div>
-</div>
-<a href="<?= route_to('blog') ?>">
-<div class="contact-info-upper-container">
-    <div class="contact-info-container">
-        <h2>otevřít blog</h2>
-    </div>
-</div>
-</a>
-<img src="<?= base_url('assets/assety/arrow.png'); ?>" alt="arrow icon" class="icon arrow" onclick="location.href='#projects'">
 </section>
 <section id="projects">
     <p class="section__text__p1">Kalkulačky</p>
@@ -92,7 +63,7 @@
                     <div class="article-container">
                     <img src="<?= base_url('assets/assety/chart-pie-solid.svg'); ?>" alt="financni poradce fotka" class="project-img">
                     </div>
-                    <h2 class="experience-sub-title project-title">Hypotéka</h2>
+                    <h2 class="experience-sub-title project-title">Hypoteční Kalkulačka</h2>
                     <div class="btn-container">
                     <a href="hypotecni-kalkulacka">
                         <button class="btn btn-color2 project-btn">Otevřít</button></a>
@@ -102,30 +73,30 @@
                     <div class="article-container">
                     <img src="<?= base_url('assets/assety/chart-line-solid.svg'); ?>" alt="financni poradce fotka" class="project-img">
                     </div>
-                    <h2 class="experience-sub-title project-title">ROI</h2>
+                    <h2 class="experience-sub-title project-title">Investiční Kalkulačka</h2>
                     <div class="btn-container">
-                    <a href="investicni-kalkulacka" target="_blank">
-                        <button class="btn btn-color2 project-btn">ROI</button></a>
+                    <a href="investicni-kalkulacka" >
+                        <button class="btn btn-color2 project-btn">Otevřít</button></a>
                     </div>
                 </div>
                 <div class="details-container color-container">
                     <div class="article-container">
                     <img src="<?= base_url('assets/photo/12.png'); ?>" alt="financni poradce fotka" class="project-img">
                     </div>
-                    <h2 class="experience-sub-title project-title">Kolik investovat?</h2>
+                    <h2 class="experience-sub-title project-title">Kolik Mám Měsíčně Investovat?</h2>
                     <div class="btn-container">
-                    <a href="kolik-investicni-kalkulacka" target="_blank">
-                        <button class="btn btn-color2 project-btn">ROI</button></a>
+                    <a href="kolik-investicni-kalkulacka">
+                        <button class="btn btn-color2 project-btn">Otevřít</button></a>
                     </div>
                 </div>
                 <div class="details-container color-container">
                     <div class="article-container">
                     <img src="<?= base_url('assets/photo/12.png'); ?>" alt="financni poradce fotka" class="project-img">
                     </div>
-                    <h2 class="experience-sub-title project-title">Renta</h2>
+                    <h2 class="experience-sub-title project-title">Kalkulačka Na Výpočet Renty</h2>
                     <div class="btn-container">
-                    <a href="rent-kalkulacka" target="_blank">
-                        <button class="btn btn-color2 project-btn">ROI</button></a>
+                    <a href="rent-kalkulacka"">
+                        <button class="btn btn-color2 project-btn">otevřít</button></a>
                     </div>
                 </div>
             </div>

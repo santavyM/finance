@@ -4,7 +4,6 @@ use App\Models\User;
 
 class CIAuth
 {
-    /** STORE LOGGED IN USER DETAILS IN SESSION */
     public static function setCIAuth($result){
         $session = session();
         $array = ['logged_in'=>true];
@@ -13,7 +12,6 @@ class CIAuth
         $session->set($array);
     }
 
-    /** GET LOGGED IN ID  */
     public static function id(){
         $session = session();
         if( $session->has('logged_in') ){
@@ -27,20 +25,17 @@ class CIAuth
         }
     }
 
-    /** CHECK IF USER IS AUTHENTICATED */
     public static function check(){
         $session = session();
         return $session->has('logged_in');
     }
 
-    /** LOGOUT FUNCTION */
     public static function forget(){
         $session = session();
         $session->remove('logged_in');
         $session->remove('userdata');
     }
 
-    /** RETURN USER DETAILS */
     public static function user(){
         $session = session();
         if( $session->has('logged_in') ){

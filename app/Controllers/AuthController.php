@@ -30,17 +30,17 @@ class AuthController extends BaseController
                 'login_id'=>[
                     'rules'=>'required|valid_email|is_not_unique[users.email]',
                     'errors'=>[
-                        'required'=>'Email is required',
-                        'valid_email'=>'Please, check the email field. It does not appears to be valid.',
-                        'is_not_unique'=>'Email is not exists in our system.'
+                        'required'=>'Email je povinný',
+                        'valid_email'=>'Nesprávný email',
+                        'is_not_unique'=>'Email neexistuje'
                     ]
                 ],
                 'password'=>[
                     'rules'=>'required|min_length[5]|max_length[45]',
                     'errors'=>[
-                        'required'=>'Password is required',
-                        'min_length'=>'Password must have atleast 5 characters in length.',
-                        'max_length'=>'Password must not have characters more than 45 in length.'
+                        'required'=>'Heslo je povinné',
+                        'min_length'=>'Heslo musí mít alespoň 5 znaků',
+                        'max_length'=>'Heslo nesmí být delší než 45 znaků'
                     ]
                 ]
              ]);
@@ -50,15 +50,15 @@ class AuthController extends BaseController
                     'rules'=>'required|is_not_unique[users.username]',
                     'errors'=>[
                         'required'=>'Username is required',
-                        'is_not_unique'=>'Username is not exists in our system.'
+                        'is_not_unique'=>'Jméno neexistuje'
                     ]
                 ],
                 'password'=>[
                     'rules'=>'required|min_length[5]|max_length[45]',
                     'errors'=>[
-                        'required'=>'Password is required',
-                        'min_length'=>'Password must have atleast 5 characters in length.',
-                        'max_length'=>'Password must not have characters more than 45 in length.'
+                        'required'=>'Heslo je povinné',
+                        'min_length'=>'Heslo musí mít alespoň 5 znaků',
+                        'max_length'=>'Heslo nesmí být delší než 45 znaků'
                     ]
                 ]
              ]);
@@ -75,9 +75,9 @@ class AuthController extends BaseController
             $check_password = Hash::check($this->request->getVar('password'), $userInfo['password']);
 
             if( !$check_password ){
-                return redirect()->route('admin.login.form')->with('fail','Wrong password')->withInput();
+                return redirect()->route('admin.login.form')->with('fail','Špatné heslo')->withInput();
             }else{
-                CIAuth::setCIAuth($userInfo); //Important line
+                CIAuth::setCIAuth($userInfo);
                 return redirect()->route('admin.home');
             }
         }
@@ -85,7 +85,7 @@ class AuthController extends BaseController
 
     public function forgotForm(){
         $data = array(
-            'pageTitle'=>'Forgot password',
+            'pageTitle'=>'Zapomenuté heslo',
             'validation'=>null,
         );
         return view('backend/pages/auth/forgot',$data);
@@ -96,16 +96,16 @@ class AuthController extends BaseController
             'email'=>[
                 'rules'=>'required|valid_email|is_not_unique[users.email]',
                 'errors'=>[
-                    'required'=>'Email is required',
-                    'valid_email'=>'Please check email field. It does not appears to be valid.',
-                    'is_not_unique'=>'Email not exists in system',
+                    'required'=>'Email je povinný',
+                    'valid_email'=>'Nesprávný email',
+                    'is_not_unique'=>'Email neexistuje',
                 ],
             ]
         ]);
 
         if( !$isValid ){
             return view('backend/pages/auth/forgot',[
-                'pageTitle'=>'Forgot password',
+                'pageTitle'=>'Zapomenuté heslo',
                 'validation'=>$this->validator,
             ]);
         }else{
@@ -156,9 +156,9 @@ class AuthController extends BaseController
 
             //Send email
             if( sendEmail($mailConfig) ){
-                return redirect()->route('admin.forgot.form')->with('success','We have e-mailed your password reset link.');
+                return redirect()->route('admin.forgot.form')->with('success','Odkaz na obnovení hesla jsme vám zaslali e-mailem.');
             }else{
-                return redirect()->route('admin.forgot.form')->with('fail','Something went wrong');
+                return redirect()->route('admin.forgot.form')->with('fail','Něco se pokazilo!');
             }
         }
     }
@@ -168,17 +168,17 @@ class AuthController extends BaseController
         $check_token = $passwordResetPassword->asObject()->where('token', $token)->first();
 
         if( !$check_token ){
-            return redirect()->route('admin.forgot.form')->with('fail','Invalid token. Request another reset password link.');
+            return redirect()->route('admin.forgot.form')->with('fail','Token expiroval. Požádej si o změnu heslo znovu');
         }else{
-            //Check if token not expired (Not older than 15 minutes)
+            //Check if token is not older than 15 minutes
             $diffMins = Carbon::createFromFormat('Y-m-d H:i:s', $check_token->created_at)->diffInMinutes(Carbon::now());
 
             if( $diffMins > 15 ){
-                //If token expired (older than 15 minutes)
-                return redirect()->route('admin.forgot.form')->with('fail','Token expired. Request another reset password link.');
+                //If token is older than 15 minutes
+                return redirect()->route('admin.forgot.form')->with('fail','Token expiroval. Požádej si o změnu heslo znovu');
             }else{
                 return view('backend/pages/auth/reset',[
-                    'pageTitle'=>'Reset password',
+                    'pageTitle'=>'Změna hesla',
                     'validation'=>null,
                     'token'=>$token
                 ]);
@@ -189,26 +189,26 @@ class AuthController extends BaseController
     public function resetPasswordHandler($token){
         $isValid = $this->validate([
             'new_password'=>[
-                'rules'=>'required|min_length[5]|max_length[20]|is_password_strong[new_password]',
+                'rules'=>'required|min_length[5]|max_length[45]|is_password_strong[new_password]',
                 'errors'=>[
-                    'required'=>'Enter new password',
-                    'min_length'=>'New password must have atleast minimum of 5 characters.',
-                    'max_length'=>'New password must have maximum of 20 characters',
-                    'is_password_strong'=>'New password must contains atleast 1 uppercase, 1 lowercase, 1 number and 1 special character.',
+                    'required'=>'Vlož nové heslo',
+                    'min_length'=>'Nové heslo musí mít minimálně 5 znaků',
+                    'max_length'=>'Nové heslo musí mít maximálně 45 znaků',
+                    'is_password_strong'=>'Nové heslo musí obsahovat alespoň 1 velké písmeno, 1 malé písmeno, 1 číslo a 1 speciální znak.',
                 ]
             ],
             'confirm_new_password'=>[
                 'rules'=>'required|matches[new_password]',
                 'errors'=>[
-                    'required'=>'Confirm new password',
-                    'matches'=>'Passwords not matches.'
+                    'required'=>'Potvrď nové heslo',
+                    'matches'=>'Heslo se neshodují'
                 ]
             ]
         ]);
 
         if( !$isValid ){
             return view('backend/pages/auth/reset',[
-                'pageTitle'=>'Reset password',
+                'pageTitle'=>'Změna hesla',
                 'validation'=>null,
                 'token'=>$token,
             ]);
@@ -222,7 +222,7 @@ class AuthController extends BaseController
             $user_info = $user->asObject()->where('email', $get_token->email)->first();
 
             if( !$get_token ){
-                return redirect()->back()->with('fail','Invalid token!')->withInput();
+                return redirect()->back()->with('fail','Špatný token!')->withInput();
             }else{
                 //Update admin password in DB
                 $user->where('email', $user_info->email)
@@ -252,9 +252,9 @@ class AuthController extends BaseController
                     $passwordResetPassword->where('email', $user_info->email)->delete();
 
                     //Redirect and display message on login page
-                    return redirect()->route('admin.login.form')->with('success','Done!, Your password has been changed. Use new password to login into system.');
+                    return redirect()->route('admin.login.form')->with('success','Hotovo, tvoje heslo bylo změněno');
                 }else{
-                    return redirect()->back()->with('fail','Something went wrong')->withInput();
+                    return redirect()->back()->with('fail','Něco se pokazilo!')->withInput();
                 }
             }
         }

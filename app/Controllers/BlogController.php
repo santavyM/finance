@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\Post;
-use App\Models\SubCategory;
 use App\Models\Category;
 
 class BlogController extends BaseController
@@ -20,8 +19,8 @@ class BlogController extends BaseController
     }
 
     public function categoryPosts($category_slug){
-       $subcat = new Category();
-       $category = $subcat->asObject()->where('id',$category_slug)->first();
+       $Cat = new Category();
+       $category = $cat->asObject()->where('id',$category_slug)->first();
        $post = new Post();
 
       $data = [];
@@ -116,69 +115,5 @@ class BlogController extends BaseController
        }
     }
 
-    public function contactUs(){
-       $data = [
-         'pageTitle'=>'Contact Us',
-         'validation'=>null,
-       ];
-       return view('frontend/pages/contact_us',$data);
-    }
 
-    public function contactUsSend(){
-       $request = \Config\Services::request();
-       
-       //Validate the form
-       $isValid = $this->validate([
-           'name'=>[
-              'rules'=>'required',
-              'errors'=>[
-                 'required'=>'Enter your full name',
-              ]
-           ],
-           'email'=>[
-              'rules'=>'required|valid_email',
-              'errors'=>[
-                 'required'=>'Email is required',
-                 'valid_email'=>'Please, check the email field. It does not appears to be valid.',
-              ]
-           ],
-           'subject'=>[
-              'rules'=>'required',
-              'errors'=>[
-                 'required'=>'Subject is required',
-              ]
-           ],
-           'message'=>[
-              'rules'=>'required',
-              'errors'=>[
-                 'required'=>'Enter your message please!'
-              ]
-           ],
-       ]);
-
-       if( !$isValid ){
-         $data = [
-            'pageTitle'=>'Contact Us',
-            'validation'=>$this->validator
-         ];
-         return view('frontend/pages/contact_us',$data);
-       }else{
-          $mail_body = 'Message from: <b>'.$request->getVar('name').'</b></br>';
-          $mail_body.= '------------------------------</br>';
-          $mail_body.= $request->getVar('message').'</br>';
-          $mailConfig = array(
-             'mail_from_email'=>env('EMAIL_FROM_ADDRESS'),
-             'mail_from_name'=>$request->getVar('name'),
-             'mail_recipient_email'=>get_settings()->blog_email,
-             'mail_recipient_name'=>get_settings()->blog_title,
-             'mail_subject'=>$request->getVar('subject'),
-             'mail_body'=>$mail_body
-          );
-          if( sendEmail($mailConfig) ){
-            return redirect()->route('contact-us')->with('success','Your message has been sent!.');
-          }else{
-            return redirect()->route('contact-us')->with('fail','Something went wrong, Try again later.');
-          }
-       }
-    }
 }

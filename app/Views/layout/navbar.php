@@ -1,6 +1,7 @@
 <nav id="desktop-nav">
 <a href="<?= base_url() ?>">
-<img loading="prelaod" decoding="async" class="img-fluid" src="/images/blog/<?= get_settings()->blog_logo ?>" alt="<?= get_settings()->blog_title ?>" style="max-width:170px"></a>
+<img loading="prelaod" decoding="async" class="img-fluid" src="/images/blog/<?= get_settings()->blog_logo ?>" alt="<?= get_settings()->blog_title ?>" style="max-width:170px">
+</a>
   <div>
     <ul class="nav-links">
       <li><a href="#about">O Mně</a></li>
@@ -11,7 +12,9 @@
   </div>
 </nav>
 <nav id="hamburger-nav">
+<a href="<?= base_url() ?>">
 <img loading="prelaod" decoding="async" class="img-fluid" src="/images/blog/<?= get_settings()->blog_logo ?>" alt="<?= get_settings()->blog_title ?>" style="max-width:170px">
+</a>
   <div class="hamburger-menu">
     <div class="hamburger-icon" onclick="toggleMenu()">
       <span></span>

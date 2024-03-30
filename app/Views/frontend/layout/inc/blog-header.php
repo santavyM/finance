@@ -2,7 +2,8 @@
 
 <nav id="desktop-nav">
 <a href="<?= base_url() ?>">
-<img loading="prelaod" decoding="async" class="img-fluid" src="/images/blog/<?= get_settings()->blog_logo ?>" alt="<?= get_settings()->blog_title ?>" style="max-width:170px"></a>
+  <img loading="prelaod" decoding="async" class="img-fluid" src="/images/blog/<?= get_settings()->blog_logo ?>" alt="<?= get_settings()->blog_title ?>" style="max-width:170px">
+</a>
   <div>
     <ul class="nav-links">
     <?php foreach( get_sidebar_categories() as $parent_category ): ?>
@@ -20,8 +21,10 @@
   </div>
 </nav>
 <nav id="hamburger-nav">
-<img loading="prelaod" decoding="async" class="img-fluid" src="/images/blog/<?= get_settings()->blog_logo ?>" alt="<?= get_settings()->blog_title ?>" style="max-width:170px">
-  <div class="hamburger-menu">
+<a href="<?= base_url() ?>">
+  <img loading="prelaod" decoding="async" class="img-fluid" src="/images/blog/<?= get_settings()->blog_logo ?>" alt="<?= get_settings()->blog_title ?>" style="max-width:170px">
+</a>  
+<div class="hamburger-menu">
     <div class="hamburger-icon" onclick="toggleMenu()">
       <span></span>
       <span></span>

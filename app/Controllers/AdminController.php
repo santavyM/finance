@@ -37,7 +37,7 @@ class AdminController extends BaseController
 
     public function logoutHandler(){
          CIAuth::forget();
-         return redirect()->route('admin.login.form')->with('fail','You are logged out!');
+         return redirect()->route('admin.login.form')->with('fail','Byl jsi odhlášen!');
     }
 
     public function profile(){
@@ -71,9 +71,9 @@ class AdminController extends BaseController
                  ->set(['picture'=>$new_filename])
                  ->update();
 
-            echo json_encode(['status'=>1,'msg'=>'Done!, your profile picture has been successfully updated.']);
+            echo json_encode(['status'=>1,'msg'=>'Hotovo, profilový obrázek byl uložen']);
         }else{
-            echo json_encode(['status'=>0,'msg'=>'Something went wrong']);
+            echo json_encode(['status'=>0,'msg'=>'Něco se pokazilo.']);
         }
     }
 
@@ -93,9 +93,9 @@ class AdminController extends BaseController
                 'username'=>[
                     'rules'=>'required|min_length[4]|is_unique[users.username,id,'.$user_id.']',
                     'errors'=>[
-                        'required'=>'Username is required',
-                        'min_length'=>'Username must have minimum of 4 characters',
-                        'is_unique'=>'Username is already taken!'
+                        'required'=>'Uživatelské jméno je vyžadováno',
+                        'min_length'=>'Uživatelské jméno musí mít minimálně 4 znaky',
+                        'is_unique'=>'Uživatelské jméno je již obsazeno!'
                     ]
                 ]
             ]);
@@ -115,9 +115,9 @@ class AdminController extends BaseController
 
                 if( $update ){
                     $user_info = $user->find($user_id);
-                    return json_encode(['status'=>1,'user_info'=>$user_info,'msg'=>'Your personal details have been successfully updated.']);
+                    return json_encode(['status'=>1,'user_info'=>$user_info,'msg'=>'Tvé osobní informace byli uloženy.']);
                 }else{
-                    return json_encode(['status'=>0,'msg'=>'Something went wrong.']);
+                    return json_encode(['status'=>0,'msg'=>'Něco se pokazilo.']);
                 }             
             }
         }
@@ -142,14 +142,14 @@ class AdminController extends BaseController
                 'blog_title'=>[
                     'rules'=>'required',
                     'errors'=>[
-                        'required'=>'Blog title is required'
+                        'required'=>'Je vyžadován název blogu'
                     ]
                 ],
                 'blog_email'=>[
                     'rules'=>'required|valid_email',
                     'errors'=>[
-                        'required'=>'Blog email is required',
-                        'valid_email'=>'Invalid email address'
+                        'required'=>'Je vyžadován e-mail',
+                        'valid_email'=>'Neplatná e-mailová adresa'
                     ]
                 ]
             ]);
@@ -169,9 +169,9 @@ class AdminController extends BaseController
                                     'blog_meta_description'=>$request->getVar('blog_meta_description')
                                    ])->update();
                 if( $update ){
-                    return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'General settings have been updated successfully.']);
+                    return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Nastavení se uložilo.']);
                 }else{
-                    return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Something went wrong.']);
+                    return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Něco se pokazilo.']);
                 }
             }
         }
@@ -227,12 +227,12 @@ class AdminController extends BaseController
                     $save = $theme->insert($data);
 
                     if ($save) {
-                        return $this->response->setJSON(['status' => 1, 'token' => csrf_hash(), 'msg' => 'New theme has been successfully uploaded and activated.']);
+                        return $this->response->setJSON(['status' => 1, 'token' => csrf_hash(), 'msg' => 'Nové téme bylo nahráno.']);
                     } else {
-                        return $this->response->setJSON(['status' => 0, 'token' => csrf_hash(), 'msg' => 'Something went wrong.']);
+                        return $this->response->setJSON(['status' => 0, 'token' => csrf_hash(), 'msg' => 'Něco se pokazilo.']);
                     }
                 } else {
-                    return $this->response->setJSON(['status' => 0, 'token' => csrf_hash(), 'msg' => 'Error on uploading theme file.']);
+                    return $this->response->setJSON(['status' => 0, 'token' => csrf_hash(), 'msg' => 'Něco se pokazilo.']);
                 }
             }
         }
@@ -293,12 +293,12 @@ class AdminController extends BaseController
                                ->update();
 
             if($update){
-                return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Done!, Blog logo has been successfully updated.']);
+                return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Hotovo! Logo bylo úspěšně aktualizováno.']);
             }else{
-                return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Something went wrong on updating new logo info.']);
+                return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Něco se pokazilo!']);
             }
           }else{
-            return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Something went wrong on uploading new logo.']);
+            return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Něco se pokazilo!']);
           }
        }
     }
@@ -323,12 +323,12 @@ class AdminController extends BaseController
                                    ->set(['blog_favicon'=>$new_filename])
                                    ->update();
                 if( $update ){
-                    return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Done!, CI4Blog favicon has been successfully updated.']);
+                    return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Hotovo! ikona byla úspěšně aktualizována.']);
                 }else{
-                    return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Something went wrong on updating new blog favicon.']);
+                    return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Něco se pokazilo!']);
                 }
             }else{
-                return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Something went wrong on uploading new blog favicon file.']);
+                return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Něco se pokazilo!']);
             }
         }
     }
@@ -342,37 +342,37 @@ class AdminController extends BaseController
                 'facebook_url'=>[
                     'rules'=>'permit_empty|valid_url_strict',
                     'errors'=>[
-                        'valid_url_strict'=>'Invalid facebook page URL',
+                        'valid_url_strict'=>'špatná URL adresa',
                     ]
                 ],
                 'twitter_url'=>[
                     'rules'=>'permit_empty|valid_url_strict',
                     'errors'=>[
-                        'valid_url_strict'=>'Invalid twitter URL'
+                        'valid_url_strict'=>'špatná URL adresa'
                     ]
                     ],
                 'instagram_url'=>[
                     'rules'=>'permit_empty|valid_url_strict',
                     'errors'=>[
-                        'valid_url_strict'=>'Invalid instagram URL'
+                        'valid_url_strict'=>'špatná URL adresa'
                     ]
                 ],
                 'youtube_url'=>[
                     'rules'=>'permit_empty|valid_url_strict',
                     'errors'=>[
-                        'valid_url_strict'=>'Invalid youtube channel URL'
+                        'valid_url_strict'=>'špatná URL adresa'
                     ]
                 ],
                 'github_url'=>[
                     'rules'=>'permit_empty|valid_url_strict',
                     'errors'=>[
-                        'valid_url_strict'=>'Invalid GitHub URL'
+                        'valid_url_strict'=>'špatná URL adresa'
                     ]
                 ],
                 'linkedin_url'=>[
                     'rules'=>'permit_empty|valid_url_strict',
                     'errors'=>[
-                        'valid_url_strict'=>'Invalid linkedin URL'
+                        'valid_url_strict'=>'špatná URL adresa'
                     ]
                 ],
             ]);
@@ -394,9 +394,9 @@ class AdminController extends BaseController
                                       ])->update();
 
                 if( $update ){
-                    return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Done!, Blog social media have been successfully updated.']);
+                    return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Hotovo! Sociální sítě byly úspěšně aktualizovány.']);
                 }else{
-                    return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Something went wrong on updating blog social media.']);
+                    return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Něco se pokazilo!']);
                 }
             }
         }
@@ -409,13 +409,22 @@ class AdminController extends BaseController
             $validation = \Config\Services::validation();
             $this->validate([
                 'mortgage'=>[
-                    'rules'=>'required'
+                    'rules'=>'required',
+                    'errors'=>[
+                        'required'=>'Políčko nesmí být prázdné'
+                    ]
                 ],
                 'rent'=>[
-                    'rules'=>'required'
+                    'rules'=>'required',
+                    'errors'=>[
+                        'required'=>'Políčko nesmí být prázdné'
+                    ]
                 ],
                 'invest'=>[
-                    'rules'=>'required'
+                    'rules'=>'required',
+                    'errors'=>[
+                        'required'=>'Políčko nesmí být prázdné'
+                    ]
                 ],
             ]);
 
@@ -433,9 +442,9 @@ class AdminController extends BaseController
                                       ])->update();
 
                 if( $update ){
-                    return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Done!, Blog social media have been successfully updated.']);
+                    return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Hotovo! Sociální sítě byly úspěšně aktualizovány.']);
                 }else{
-                    return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Something went wrong on updating blog social media.']);
+                    return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Něco se pokazilo!']);
                 }
             }
         }
@@ -458,8 +467,8 @@ class AdminController extends BaseController
                 'category_name'=>[
                     'rules'=>'required|is_unique[categories.name]',
                     'errors'=>[
-                        'required'=>'Category name is required',
-                        'is_unique'=>'Category name is already exists'
+                        'required'=>'Název kategorie je povinný',
+                        'is_unique'=>'Název kategorie není unikátní'
                     ]
                 ]
             ]);
@@ -473,16 +482,15 @@ class AdminController extends BaseController
                 $save = $category->save(['name'=>$request->getVar('category_name')]);
 
                 if( $save ){
-                    return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'New category has been successfully added.']);
+                    return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Nová kategorie byla úspěšně přidána.']);
                 }else{
-                    return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Something went wrong.']);
+                    return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Něco se pokazilo!']);
                 }
             }
         }
     }
 
     public function getCategories(){
-        //DB Details
         $dbDetails = array(
             "host"=>$this->db->hostname,
             "user"=>$this->db->username,
@@ -506,8 +514,8 @@ class AdminController extends BaseController
                 "dt"=>2,
                 "formatter"=>function($d, $row){
                     return "<div class='btn-group'>
-                        <button class='btn btn-sm btn-link p-0 mx-1 editCategoryBtn' data-id='".$row['id']."'>Edit</button>
-                        <button class='btn btn-sm btn-link p-0 mx-1 deleteCategoryBtn' data-id='".$row['id']."'>Delete</button>
+                        <button class='btn btn-sm btn-link p-0 mx-1 editCategoryBtn' data-id='".$row['id']."'>Upravit</button>
+                        <button class='btn btn-sm btn-link p-0 mx-1 deleteCategoryBtn' data-id='".$row['id']."'>Odstranit</button>
                     </div>";
                 }
             ),
@@ -546,8 +554,8 @@ class AdminController extends BaseController
                 'category_name'=>[
                     'rules'=>'required|is_unique[categories.name,id,'.$id.']',
                     'errors'=>[
-                        'required'=>'Category name is required',
-                        'is_unique'=>'Category name is already exists'
+                        'required'=>'Název kategorie je povinný',
+                        'is_unique'=>'Název kategorie není unikátní'
                     ]
                 ]
             ]);
@@ -563,9 +571,9 @@ class AdminController extends BaseController
                                    ->update();
 
                 if( $update ){
-                    return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Category has been successfully update.']);
+                    return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Kategorie byla úspěšně upravena.']);
                 }else{
-                    return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Something went wrong.']);
+                    return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Něco se pokazilo!']);
                 }
             }
         }
@@ -582,9 +590,9 @@ class AdminController extends BaseController
                 //Delete category
                 $delete = $category->where('id',$id)->delete();
                 if( $delete ){
-                    return $this->response->setJSON(['status'=>1,'msg'=>'Category has been successfully deleted.']);
+                    return $this->response->setJSON(['status'=>1,'msg'=>'Kategorie byla úspěšně smazána.']);
                 }else{
-                    return $this->response->setJSON(['status'=>0,'msg'=>'Something went wrong.']);
+                    return $this->response->setJSON(['status'=>0,'msg'=>'Něco se pokazilo!']);
                 }
             }
     }
@@ -604,7 +612,7 @@ class AdminController extends BaseController
                          ->set(['ordering'=>$newPosition])
                          ->update();
             }
-            return $this->response->setJSON(['status'=>1,'msg'=>'Categories ordering has been successfully updated.']);
+            return $this->response->setJSON(['status'=>1,'msg'=>'Řazení kategorií bylo úspěšně aktualizováno.']);
         }
     }
 
@@ -636,7 +644,7 @@ class AdminController extends BaseController
     {
         $category = new Category();
         $data = [
-            'pageTitle'=>'Add new post',
+            'pageTitle'=>'Přidat článek',
             'categories'=>$category->asObject()->findAll()
         ];
         return view('backend/pages/new-post',$data);
@@ -652,29 +660,29 @@ class AdminController extends BaseController
                 'title'=>[
                     'rules'=>'required|is_unique[posts.title]',
                     'errors'=>[
-                        'required'=>'Post title is required',
-                        'is_unique'=>'This post title is already exists',
+                        'required'=>'Název článku je povinný',
+                        'is_unique'=>'Tento název článku již existuje',
                     ]
                 ],
                 'content'=>[
                     'rules'=>'required|min_length[20]',
                     'errors'=>[
-                        'required'=>'Post content is required',
-                        'min_length'=>'Post content must have atleast 20 characters',
+                        'required'=>'Obsah článku je povinný',
+                        'min_length'=>'Obsah musí mít minimálně 20 znaků',
                     ]
                 ],
                 'category'=>[
                     'rules'=>'required',
                     'errors'=>[
-                        'required'=>'Select post category'
+                        'required'=>'Vyberte kategorii příspěvků'
                     ]
                 ],
                 'featured_image'=>[
                     'rules'=>'uploaded[featured_image]|is_image[featured_image]|max_size[featured_image,2048]',
                     'errors'=>[
-                        'uploaded'=>'Featured image is required',
-                        'is_image'=>'Select an image file type',
-                        'max_size'=>'Select image that not excess 2MB is size'
+                        'uploaded'=>'Obrázek je povinný',
+                        'is_image'=>'Vyber fotku!',
+                        'max_size'=>'Vyberte obrázek, jehož velikost nepřesahuje 2 MB'
                     ]
                 ],
             ]);
@@ -683,11 +691,9 @@ class AdminController extends BaseController
                 $errors = $validation->getErrors();
                 return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'error'=>$errors]);
             }else{
-                // return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Validated.']);
                 $user_id = CIAuth::id();
                 $path = 'images/posts/';
                 $file = $request->getFile('featured_image');
-                // $filename = $file->getClientName();
                 $filename = 'pimg_'.time().$file->getClientName();
 
                 //Make post featured images folder is not exists
@@ -731,12 +737,12 @@ class AdminController extends BaseController
                     $last_id = $post->getInsertID();
 
                     if( $save ){
-                        return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'New blog post has been successfully created.']);
+                        return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Nový článek se úspěšně vytvořil']);
                     }else{
-                        return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Something went wrong.']);
+                        return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Něco se pokazilo!']);
                     }
                 }else{
-                    return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Error on uploading featured image.']);
+                    return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Špatně se nahrál obrázek, zkuste znovu']);
                 }
             }
         }
@@ -752,7 +758,6 @@ class AdminController extends BaseController
 
     public function getPosts()
     {
-        //DB Details
         $dbDetails = array(
             "host"=>$this->db->hostname,
             "user"=>$this->db->username,
@@ -794,8 +799,7 @@ class AdminController extends BaseController
                     if ($categoryObject !== null) {
                         return $categoryObject->name;
                     } else {
-                        // Handle the case where the category is not found
-                        return 'Category Not Found';
+                        return 'KATEGORIE NENALEZENA';
                     }
                 }
             ),
@@ -805,7 +809,7 @@ class AdminController extends BaseController
                 "formatter"=>function($d, $row){
                     $post = new Post();
                     $visibility = $post->asObject()->find($row['id'])->visibility;
-                    return $visibility == 1 ? 'Public' : 'Private';
+                    return $visibility == 1 ? 'Veřejné' : 'Soukromé';
                 }
             ),
             array(
@@ -813,8 +817,8 @@ class AdminController extends BaseController
                 "dt"=>5,
                 "formatter"=>function($d, $row){
                     return "<div class='btn-group'>
-                       <a href='".route_to('edit-post',$row['id'])."' class='btn btn-sm btn-link p-0 mx-1'>Edit</a>
-                       <button class='btn btn-sm btn-link p-0 mx-1 deletePostBtn' data-id='".$row['id']."'>Delete</button>
+                       <a href='".route_to('edit-post',$row['id'])."' class='btn btn-sm btn-link p-0 mx-1'>Upravit</a>
+                       <button class='btn btn-sm btn-link p-0 mx-1 deletePostBtn' data-id='".$row['id']."'>Odstranit</button>
                     </div>";
                 }
             )
@@ -850,23 +854,23 @@ class AdminController extends BaseController
                     'title'=>[
                         'rules'=>'required|is_unique[posts.title,id,'.$post_id.']',
                         'errors'=>[
-                            'required'=>'Post title is required',
-                            'is_unique'=>'This post title is already exists'
+                            'required'=>'Název článku je povinný',
+                            'is_unique'=>'Tento název článku již existuje'
                         ]
                     ],
                     'content'=>[
                         'rules'=>'required|min_length[20]',
                         'errors'=>[
-                            'required'=>'Post content is required',
-                            'min_length'=>'Post content must have atleast 20 characters'
+                            'required'=>'Obsah článku je povinný',
+                            'min_length'=>'Obsah musí mít minimálně 20 znaků'
                         ]
                     ],
                     'featured_image'=>[
                         'rules'=>'uploaded[featured_image]|is_image[featured_image]|max_size[featured_image,2048]',
                         'errors'=>[
-                            'uploaded'=>'A valid featured image is required',
-                            'is_image'=>'Select image file type',
-                            'max_size'=>'Selected image is too big. Maximum size is 2MB'
+                            'uploaded'=>'Obrázek je povinný',
+                            'is_image'=>'Vyber fotku!',
+                            'max_size'=>'Vyberte obrázek, jehož velikost nepřesahuje 2 MB'
                         ]
                     ]
                 ]);
@@ -875,15 +879,15 @@ class AdminController extends BaseController
                     'title'=>[
                         'rules'=>'required|is_unique[posts.title,id,'.$post_id.']',
                         'errors'=>[
-                            'required'=>'Post title is required',
-                            'is_unique'=>'This post title is already exists'
+                            'required'=>'Název článku je povinný',
+                            'is_unique'=>'Tento název článku již existuje'
                         ]
                     ],
                     'content'=>[
                         'rules'=>'required|min_length[20]',
                         'errors'=>[
-                            'required'=>'Post content is required',
-                            'min_length'=>'Post content must have atleast 20 characters'
+                            'required'=>'Obsah článku je povinný',
+                            'min_length'=>'Obsah musí mít minimálně 20 znaků'
                         ]
                     ],
                 ]);
@@ -947,12 +951,12 @@ class AdminController extends BaseController
                         );
                         $update = $post->update($post_id,$data);
                         if($update){
-                            return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Blog post has been successfully updated.']);
+                            return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Článek se úspěšně upravil']);
                         }else{
-                            return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Something went wrong.']);
+                            return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Něco se pokazilo!']);
                         }
                     }else{
-                        return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Error on uploading featured image.']);
+                        return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Něco se pokazilo!']);
                     }
                 }else{
                     //Update post details
@@ -973,9 +977,9 @@ class AdminController extends BaseController
                     );
                     $update = $post->update($post_id,$data);
                     if($update){
-                        return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Blog post has been successfully updated.']);
+                        return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Článek se úspěšně upravil']);
                     }else{
-                        return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Something went wrong.']);
+                        return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Něco se pokazilo!']);
                     }
                 }
             }
@@ -1010,9 +1014,9 @@ class AdminController extends BaseController
             $delete = $post->delete($post_id);
 
             if($delete){
-                return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Good!. Post has been successfully deleted.']);
+                return $this->response->setJSON(['status'=>1,'token'=>csrf_hash(),'msg'=>'Článek byl úspěšně smazán']);
             }else{
-                return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Something went wrong.']);
+                return $this->response->setJSON(['status'=>0,'token'=>csrf_hash(),'msg'=>'Něco se pokazilo!']);
             }
         }
     }

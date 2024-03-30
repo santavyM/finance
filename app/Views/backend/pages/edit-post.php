@@ -5,21 +5,11 @@
     <div class="row">
         <div class="col-md-6 col-sm-12">
             <div class="title">
-                <h4>Edit post</h4>
+                <h4>Uprav článek</h4>
             </div>
-            <nav aria-label="breadcrumb" role="navigation">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="<?= route_to('admin.home') ?>">Home</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                        Edit post
-                    </li>
-                </ol>
-            </nav>
         </div>
         <div class="col-md-6 col-sm-12 text-right">
-            <a href="<?= route_to('all-posts') ?>" class="btn btn-primary">View all posts</a>
+            <a href="<?= route_to('all-posts') ?>" class="btn btn-primary">Všechny články</a>
         </div>
     </div>
 </div>
@@ -32,12 +22,12 @@
              <div class="card card-box mb-2">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for=""><b>Post title</b></label>
-                        <input type="text" class="form-control" placeholder="Enter post title" name="title" value="<?= $post->title ?>">
+                        <label for=""><b>Název článku</b></label>
+                        <input type="text" class="form-control" placeholder="Vlož název článku" name="title" value="<?= $post->title ?>">
                         <span class="text-danger error-text title_error"></span>
                     </div>
                     <div class="form-group">
-                        <label for=""><b>Content</b></label>
+                        <label for=""><b>Obsah</b></label>
                         <textarea name="content" id="content" cols="30" rows="10" class="form-control" placeholder="Type..."><?= $post->content ?></textarea>
                         <span class="text-danger error-text content_error"></span>
                     </div>
@@ -47,12 +37,12 @@
                 <h5 class="card-header weight-500">SEO</h5>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for=""><b>Post meta keywords</b><small>(Separated by comma)</small></label>
-                        <input type="text" class="form-control" placeholder="Enter post meta keywords" name="meta_keywords" value="<?= $post->meta_keywords ?>">
+                        <label for=""><b>Klíčová slova pro optimalizaci vyhledávače </b><small>(oddělené čárkou)</small></label>
+                        <input type="text" class="form-control" placeholder="Vlož klíčové slova" name="meta_keywords" value="<?= $post->meta_keywords ?>">
                     </div>
                     <div class="form-group">
-                        <label for=""><b>Post meta description</b></label>
-                        <textarea name="meta_description" id="" cols="30" rows="10" class="form-control" placeholder="Type meta description"><?= $post->meta_description ?></textarea>
+                        <label for=""><b>Popis pro optimalizaci vyhledávače</b></label>
+                        <textarea name="meta_description" id="" cols="30" rows="10" class="form-control" placeholder="Napiš popis pro optimalizaci vyhledávače"><?= $post->meta_description ?></textarea>
                     </div>
                 </div>
              </div>
@@ -61,7 +51,7 @@
              <div class="card card-box mb-2">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for=""><b>Post category</b></label>
+                        <label for=""><b>Kategorie článku</b></label>
                         <select name="category" id="" class="custom-select form-control">
                             <?php
                                 use App\Libraries\CIAuth;
@@ -72,7 +62,7 @@
                         <span class="text-danger error-text category_error"></span>
                     </div>
                     <div class="form-group">
-                        <label for=""><b>Post featured image</b></label>
+                        <label for=""><b>Úvodní fotka článku</b></label>
                         <input type="file" name="featured_image" class="form-control-file form-control" height="auto">
                         <span class="text-danger error-text featured_image_error"></span>
                     </div>
@@ -80,20 +70,20 @@
                          <img src="" alt="" class="img-thumbnail" id="image-previewer" data-ijabo-default-img="/images/posts/resized_<?= $post->featured_image ?>">
                     </div>
                     <div class="form-group">
-                        <label for=""><b>Tags</b></label>
-                        <input type="text" class="form-control" placeholder="Enter tags" name="tags" data-role='tagsinput' value="<?= $post->tags ?>">
+                        <label for=""><b>Tagy</b></label>
+                        <input type="text" class="form-control" placeholder="Vlož tagy" name="tags" data-role='tagsinput' value="<?= $post->tags ?>">
                         <span class="text-danger error-text tags_error"></span>
                     </div>
                     <hr>
                     <div class="form-group">
-                        <label for=""><b>Visibility</b></label>
+                        <label for=""><b>Viditelnost</b></label>
                         <div class="custom-control custom-radio mb-5">
                             <input type="radio" name="visibility" id="customRadio1" class="custom-control-input" value="1" <?= $post->visibility == 1 ? 'checked': '' ?>>
-                            <label for="customRadio1" class="custom-control-label">Public</label>
+                            <label for="customRadio1" class="custom-control-label">Veřejné</label>
                         </div>
                         <div class="custom-control custom-radio mb-5">
                             <input type="radio" name="visibility" id="customRadio2" class="custom-control-input" value="0" <?= $post->visibility == 0 ? 'checked' :'' ?>>
-                            <label for="customRadio2" class="custom-control-label">Private</label>
+                            <label for="customRadio2" class="custom-control-label">Soukromé</label>
                         </div>
                     </div>
                 </div>
@@ -101,7 +91,7 @@
         </div>
     </div>
     <div class="mb-3">
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Uložit</button>
     </div>
 </form>
 

@@ -3,10 +3,10 @@
 
 <div class="login-box bg-white box-shadow border-radius-10">
     <div class="login-title">
-        <h2 class="text-center text-primary">Forgot Password</h2>
+        <h2 class="text-center text-primary">Zapomenuté heslo</h2>
     </div>
     <h6 class="mb-20">
-        Enter your email address to reset your password
+        Vložte vaši emailovou adresu na obnovu hesla
     </h6>
     <?php $validation = \Config\Services::validation();  ?>
     <form action="<?= route_to('send_password_reset_link') ?>" method="POST">
@@ -45,7 +45,7 @@
             <div class="col-5">
                 <div class="input-group mb-0">
                 
-                <input class="btn btn-primary btn-lg btn-block" type="submit" value="Submit">
+                <input class="btn btn-primary btn-lg btn-block" type="submit" value="Odeslat">
 
                 </div>
             </div>
@@ -56,7 +56,7 @@
             </div>
             <div class="col-5">
                 <div class="input-group mb-0">
-                    <a class="btn btn-outline-primary btn-lg btn-block" href="<?= route_to('admin.login.form') ?>">Login</a>
+                    <a class="btn btn-outline-primary btn-lg btn-block" href="<?= route_to('admin.login.form') ?>">Přihlásit se</a>
                 </div>
             </div>
         </div>

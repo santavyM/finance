@@ -5,23 +5,13 @@
     <div class="row">
         <div class="col-md-6 col-sm-12">
             <div class="title">
-                <h4>All posts</h4>
+                <h4>Články</h4>
             </div>
-            <nav aria-label="breadcrumb" role="navigation">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="<?= route_to('admin.home') ?>">Home</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                        All posts
-                    </li>
-                </ol>
-            </nav>
         </div>
         <div class="col-md-6 col-sm-12 text-right">
             <div class="dropdown">
                 <a class="btn btn-primary" href="<?= route_to('new-post') ?>">
-                    Add new post
+                    Přidat nový článek
                 </a>
             </div>
         </div>
@@ -33,7 +23,7 @@
         <div class="card card-box">
             <div class="card-header">
                 <div class="clearfix">
-                    <div class="pull-left">All Posts</div>
+                    <div class="pull-left">Všechny Články</div>
                     <div class="pull-right"></div>
                 </div>
             </div>
@@ -42,11 +32,11 @@
                       <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Featured image</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Visibility</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Fotka</th>
+                            <th scope="col">Název</th>
+                            <th scope="col">Kategorie</th>
+                            <th scope="col">Viditelnost</th>
+                            <th scope="col">Funkce</th>
                         </tr>
                       </thead>
                       <tbody></tbody>
@@ -91,12 +81,12 @@
     //    alert(post_id);
        var url = "<?= route_to('delete-post') ?>";
        swal.fire({
-          title:'Are you sure?',
-          html:'you want to delete this post',
+          title:'POZOR',
+          html:'Opravdu chcete odstranit tento článek?',
           showCloseButton:true,
           showCancelButton:true,
-          cancelButtonText:'Cancel',
-          confirmButtonText:'Yes, Delete',
+          cancelButtonText:'Ne',
+          confirmButtonText:'Ano, odstranit',
           cancelButtonColor:'#d33',
           confirmButtonColor:'#3085d6',
           width:300,

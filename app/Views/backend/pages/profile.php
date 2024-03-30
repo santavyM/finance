@@ -5,18 +5,8 @@
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <div class="title">
-                <h4>Profile</h4>
+                <h4>Profil</h4>
             </div>
-            <nav aria-label="breadcrumb" role="navigation">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="<?= route_to('admin.home'); ?>">Home</a>
-                    </li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                        Profile
-                    </li>
-                </ol>
-            </nav>
         </div>
     </div>
 </div>
@@ -43,7 +33,7 @@
                 <div class="tab height-100-p">
                     <ul class="nav nav-tabs customtab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#personal_details" role="tab">Personal details</a>
+                            <a class="nav-link active" data-toggle="tab" href="#personal_details" role="tab">O mně</a>
                         </li>
                       
                     </ul>
@@ -56,14 +46,14 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="">Name</label>
+                                                <label for="">Jméno</label>
                                                 <input type="text" name="name" class="form-control" placeholder="Enter full name" value="<?= get_user()->name ?>">
                                                 <span class="text-danger error-text name_error"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="">Username</label>
+                                                <label for="">Přihlašovací přezdívka</label>
                                                 <input type="text" name="username" class="form-control" placeholder="Enter username" value="<?= get_user()->username ?>">
                                                 <span class="text-danger error-text username_error"></span>
                                             </div>
@@ -75,7 +65,7 @@
                                         <span class="text-danger error-text bio_error"></span>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" class="btn btn-primary">Uložit</button>
                                     </div>
                                </form>
                             </div>
