@@ -4,9 +4,9 @@
 </a>
   <div>
     <ul class="nav-links">
-      <li><a href="#about">O Mně</a></li>
-      <li><a href="#contact">Kontakt</a></li>
-      <li><a href="#projects">Kalkulačky</a></li>
+      <li><a href=<?= base_url("#about") ?>>O Mně</a></li>
+      <li><a href=<?= base_url("#contact") ?>>Kontakt</a></li>
+      <li><a href=<?= base_url('#projects') ?>>Kalkulačky</a></li>
       <li><a href="<?= route_to('blog') ?>">Blog</a></li>
     </ul>
   </div>
